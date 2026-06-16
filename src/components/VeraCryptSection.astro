@@ -1,0 +1,63 @@
+---
+---
+
+<section id="veracrypt" class="py-28 px-5">
+  <div class="max-w-5xl mx-auto">
+    <div class="relative bg-[#141414] border border-white/[0.07] rounded-3xl p-8 sm:p-12 overflow-hidden">
+      <!-- Background glow -->
+      <div
+        class="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none"
+        style="background: radial-gradient(circle, rgba(58,166,174,0.06) 0%, transparent 65%); transform: translate(30%, -30%);"
+        aria-hidden="true"
+      />
+
+      <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+        <!-- Logos -->
+        <div class="flex items-center gap-6 flex-shrink-0">
+          <div class="flex flex-col items-center gap-2">
+            <img src="/logo.svg" alt="Arcanum" class="w-16 h-16" />
+            <span class="text-xs text-gray-500 font-medium">Arcanum</span>
+          </div>
+
+          <div class="flex flex-col items-center gap-1 text-gray-700">
+            <div class="w-px h-8 bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+            </svg>
+            <div class="w-px h-8 bg-gradient-to-b from-transparent via-white/15 to-transparent" />
+          </div>
+
+          <!-- VeraCrypt logo placeholder -->
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-16 h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center">
+              <span class="text-[10px] text-gray-400 text-center leading-tight font-mono font-bold tracking-tight">Vera<br />Crypt</span>
+            </div>
+            <span class="text-xs text-gray-500 font-medium">VeraCrypt</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <p class="text-xs tracking-[0.2em] uppercase font-semibold text-crystal mb-4">The foundation</p>
+          <h2 class="text-2xl sm:text-3xl font-bold mb-5 tracking-tight leading-snug">
+            Built on VeraCrypt's<br class="hidden sm:block" /> proven cryptography
+          </h2>
+          <p class="text-gray-400 leading-relaxed mb-4 text-sm sm:text-base">
+            Arcanum is built on the same audited cryptographic code that powers VeraCrypt — one of the most trusted disk-encryption tools in the world. Your Arcanum vaults <em class="not-italic text-white">are</em> standard VeraCrypt containers.
+          </p>
+          <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+            This means your data is never locked into a proprietary format. Open your vault on any VeraCrypt-compatible platform — Windows, macOS, Linux — at any time. True interoperability, true freedom.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2">
+            {['AES-256', 'Serpent', 'Twofish', 'Camellia', 'Kuznyechik', 'Cascades'].map((algo) => (
+              <span class="px-3 py-1 rounded-full bg-crystal/10 border border-crystal/20 text-crystal text-xs font-medium">
+                {algo}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
