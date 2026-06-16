@@ -7,7 +7,7 @@ import '../styles/global.css';
 
 <Layout
   title="Privacy Policy — Arcanum"
-  description="Arcanum privacy policy. We collect no personal data."
+  description="Arcanum does not collect, transmit, or share any of your personal data. The app works entirely offline."
 >
   <Nav />
   <main class="max-w-3xl mx-auto px-5 pt-32 pb-24">
@@ -24,41 +24,162 @@ import '../styles/global.css';
     <h1 class="text-3xl sm:text-4xl font-bold mb-3 tracking-tight">Privacy Policy</h1>
     <p class="text-gray-500 text-sm mb-14">Last updated: June 2026</p>
 
-    <div class="space-y-10 text-gray-300 text-sm sm:text-base leading-relaxed">
-      <section>
-        <h2 class="text-lg font-semibold text-white mb-3">No data collection</h2>
+    <div class="space-y-12 text-gray-300 text-sm sm:text-base leading-relaxed">
+
+      <!-- Summary -->
+      <section class="bg-crystal/5 border border-crystal/20 rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-white mb-3">Summary</h2>
         <p>
-          Arcanum does not collect, transmit, or store any personal data. The application operates
-          entirely on-device. No analytics, no crash reporting, no telemetry of any kind.
+          Arcanum does not collect, transmit, or share any of your personal data.
+          The app works entirely offline and has no internet permission.
+          Everything you create stays on your device, encrypted, under your control.
         </p>
       </section>
 
+      <!-- What Arcanum Does NOT Do -->
       <section>
-        <h2 class="text-lg font-semibold text-white mb-3">This website</h2>
-        <p>
-          This website is a static page hosted on GitHub Pages. GitHub may collect standard web
-          server logs (IP address, user agent, referrer) as part of their hosting service. Arcanum
-          itself does not set cookies or use tracking scripts on this site.
-        </p>
+        <h2 class="text-xl font-semibold text-white mb-4">What Arcanum Does NOT Do</h2>
+        <ul class="space-y-2">
+          {[
+            'Require internet access',
+            'Collect analytics or usage statistics',
+            'Use crash reporting or telemetry services',
+            'Contain advertising or third-party trackers',
+            'Transmit your files, passwords, or metadata anywhere',
+            'Access your contacts, location, or other apps\' data',
+          ].map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="text-crystal mt-0.5 flex-none">✕</span>
+              <span>Arcanum does <strong class="text-white font-medium">not</strong> {item}</span>
+            </li>
+          ))}
+        </ul>
       </section>
 
+      <!-- Data Stored On Your Device -->
       <section>
-        <h2 class="text-lg font-semibold text-white mb-3">Your encrypted data</h2>
-        <p>
-          All encryption and decryption happens locally on your device. Your keys, passphrases, and
-          vault contents never leave your device. Arcanum cannot access your data, and neither can
-          anyone else without your passphrase.
-        </p>
+        <h2 class="text-xl font-semibold text-white mb-4">Data Stored On Your Device</h2>
+        <p class="mb-5">All data created and used by Arcanum remains exclusively on your device:</p>
+        <div class="space-y-4">
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Encrypted vault files</p>
+            <p class="text-gray-400 text-sm">VeraCrypt-compatible containers (e.g. <code class="text-crystal bg-crystal/10 px-1 rounded">.hc</code> or any extension you choose): stored where you choose, never transmitted.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">App PIN</p>
+            <p class="text-gray-400 text-sm">Used to unlock Arcanum: stored as a SHA-256 hash in Android's EncryptedSharedPreferences (AES-256-GCM, Keystore-backed). The raw PIN is never stored.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Container passwords</p>
+            <p class="text-gray-400 text-sm">Never stored on disk. They exist only in memory during an active mount session. If you enable biometric unlock for a vault, the password is encrypted with a Keystore-backed biometric key — still never leaving your device.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Biometric credentials</p>
+            <p class="text-gray-400 text-sm">Managed entirely by Android's Keystore system. Arcanum never has access to your raw biometric data (fingerprint, face), only to Keystore-backed cryptographic keys.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">App settings and preferences</p>
+            <p class="text-gray-400 text-sm">Stored locally via Android DataStore.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Vault metadata</p>
+            <p class="text-gray-400 text-sm">Names, paths, last-mounted times: stored locally in a standard SQLite database (via Android Room). This database is not encrypted at rest, but it contains only metadata — the actual file content always remains inside VeraCrypt-encrypted containers.</p>
+          </div>
+        </div>
+        <p class="mt-5 text-gray-400">None of the above is ever transmitted to us or any third party, because Arcanum has no network connectivity at all.</p>
       </section>
 
+      <!-- Privacy-Protective Features -->
       <section>
-        <h2 class="text-lg font-semibold text-white mb-3">Contact</h2>
-        <p>
-          For privacy-related questions, open an issue on the{' '}
-          <a href="https://github.com/Esdex/Arcanum" class="text-crystal hover:underline">GitHub repository</a>.
-        </p>
-        <p class="text-gray-500 text-sm mt-4 italic">Full privacy policy text coming soon.</p>
+        <h2 class="text-xl font-semibold text-white mb-4">Privacy-Protective Features</h2>
+        <p class="mb-5">Arcanum is built with privacy as a first principle, beyond just encryption:</p>
+        <div class="space-y-4">
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Screenshot protection</p>
+            <p class="text-gray-400 text-sm">Arcanum sets the <code class="text-crystal bg-crystal/10 px-1 rounded">FLAG_SECURE</code> window flag, which prevents the OS and third-party screen recorders from capturing the app's contents. The app will appear blank in the system recents screen.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Calculator disguise</p>
+            <p class="text-gray-400 text-sm">Arcanum can disguise itself on your home screen and in the app drawer as a plain calculator. The real app is only accessible by entering your PIN in the calculator interface.</p>
+          </div>
+          <div class="bg-[#141414] border border-white/[0.06] rounded-xl p-4">
+            <p class="font-medium text-white mb-1">Panic PIN</p>
+            <p class="text-gray-400 text-sm">A second PIN can be configured to trigger an emergency action (panic wipe) instead of opening the app.</p>
+          </div>
+        </div>
       </section>
+
+      <!-- Permissions -->
+      <section>
+        <h2 class="text-xl font-semibold text-white mb-4">Permissions Explained</h2>
+        <p class="mb-5">Arcanum requests only the permissions necessary for its core functionality:</p>
+        <div class="overflow-x-auto rounded-xl border border-white/[0.06]">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-white/[0.04] border-b border-white/[0.06]">
+                <th class="text-left px-4 py-3 font-semibold text-white">Permission</th>
+                <th class="text-left px-4 py-3 font-semibold text-white">Purpose</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.04]">
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">READ / WRITE / MANAGE<br/>_EXTERNAL_STORAGE</td>
+                <td class="px-4 py-3 text-gray-400">To access vault files stored on external storage. On Android 11+, MANAGE_EXTERNAL_STORAGE ("All Files Access") is required to open containers outside app-private directories.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">USE_BIOMETRIC<br/>USE_FINGERPRINT</td>
+                <td class="px-4 py-3 text-gray-400">To unlock vaults using your device's biometric hardware (optional, enabled per-vault).</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">FOREGROUND_SERVICE<br/>_DATA_SYNC</td>
+                <td class="px-4 py-3 text-gray-400">To run the container creation process as a foreground service, ensuring it completes reliably even when the app is in the background. No data is transmitted.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">usb.host (optional)</td>
+                <td class="px-4 py-3 text-gray-400">To allow storing vaults on external USB drives or SD cards connected via OTG.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-gray-400">Arcanum does <strong class="text-white font-medium">not</strong> request internet, location, contacts, microphone, or any permission unrelated to local file encryption.</p>
+      </section>
+
+      <!-- Google Play Billing -->
+      <section>
+        <h2 class="text-xl font-semibold text-white mb-4">Google Play Billing <span class="text-sm font-normal text-gray-500">(Play Store version only)</span></h2>
+        <p class="mb-3">
+          If you purchase the Pro upgrade through the Google Play Store, the transaction is processed entirely by Google Play Billing. We do not receive or store your payment information. Please refer to <a href="https://policies.google.com/privacy" class="text-crystal hover:underline">Google's Privacy Policy</a> for details on how Google handles billing data.
+        </p>
+        <p class="text-gray-400">The F-Droid version of Arcanum does not include any billing or payment functionality and all features are available for free.</p>
+      </section>
+
+      <!-- Open Source -->
+      <section>
+        <h2 class="text-xl font-semibold text-white mb-4">Open Source</h2>
+        <p class="mb-3">Arcanum is open source. You can review the complete source code at:</p>
+        <a href="https://github.com/Esdex/Arcanum" class="text-crystal hover:underline">github.com/Esdex/Arcanum</a>
+        <p class="mt-3 text-gray-400">We encourage security researchers and privacy-conscious users to audit the code themselves rather than simply trusting this policy.</p>
+      </section>
+
+      <!-- Children's Privacy -->
+      <section>
+        <h2 class="text-xl font-semibold text-white mb-4">Children's Privacy</h2>
+        <p>Arcanum does not knowingly collect any data from anyone, including children, because it does not collect data from anyone at all.</p>
+      </section>
+
+      <!-- Changes -->
+      <section>
+        <h2 class="text-xl font-semibold text-white mb-4">Changes to This Policy</h2>
+        <p>If this policy ever changes (for example, if a future feature requires network access), we will update this page and clearly note the change, along with the date of the update.</p>
+      </section>
+
+      <!-- Contact -->
+      <section>
+        <h2 class="text-xl font-semibold text-white mb-4">Contact</h2>
+        <p>Questions about this Privacy Policy can be raised via GitHub Issues:</p>
+        <a href="https://github.com/Esdex/Arcanum/issues" class="text-crystal hover:underline">github.com/Esdex/Arcanum/issues</a>
+      </section>
+
     </div>
   </main>
   <Footer />
