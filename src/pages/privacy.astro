@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Privacy Policy — Arcanum"
+  description="Arcanum privacy policy. We collect no personal data."
+>
+  <Nav />
+  <main class="max-w-3xl mx-auto px-5 pt-32 pb-24">
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-white mb-14 transition-colors"
+    >
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to home
+    </a>
+
+    <h1 class="text-3xl sm:text-4xl font-bold mb-3 tracking-tight">Privacy Policy</h1>
+    <p class="text-gray-500 text-sm mb-14">Last updated: June 2026</p>
+
+    <div class="space-y-10 text-gray-300 text-sm sm:text-base leading-relaxed">
+      <section>
+        <h2 class="text-lg font-semibold text-white mb-3">No data collection</h2>
+        <p>
+          Arcanum does not collect, transmit, or store any personal data. The application operates
+          entirely on-device. No analytics, no crash reporting, no telemetry of any kind.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-white mb-3">This website</h2>
+        <p>
+          This website is a static page hosted on GitHub Pages. GitHub may collect standard web
+          server logs (IP address, user agent, referrer) as part of their hosting service. Arcanum
+          itself does not set cookies or use tracking scripts on this site.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-white mb-3">Your encrypted data</h2>
+        <p>
+          All encryption and decryption happens locally on your device. Your keys, passphrases, and
+          vault contents never leave your device. Arcanum cannot access your data, and neither can
+          anyone else without your passphrase.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-white mb-3">Contact</h2>
+        <p>
+          For privacy-related questions, open an issue on the{' '}
+          <a href="https://github.com/" class="text-crystal hover:underline">GitHub repository</a>.
+        </p>
+        <p class="text-gray-500 text-sm mt-4 italic">Full privacy policy text coming soon.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
