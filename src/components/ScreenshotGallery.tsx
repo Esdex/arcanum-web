@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 
 const screens = [
-  { label: 'Vault',        src: '/screenshots/vault.webp' },
-  { label: 'Calculator',   src: '/screenshots/calculator.webp' },
-  { label: 'File Manager', src: '/screenshots/file-manager.webp' },
-  { label: 'Gallery',      src: '/screenshots/gallery.webp' },
-  { label: 'Algorithms',   src: '/screenshots/algorithms.webp' },
+  { label: 'Vault',         src: '/screenshots/vault.webp' },
+  { label: 'Calculator',    src: '/screenshots/calculator.webp' },
+  { label: 'Gallery',       src: '/screenshots/gallery.webp' },
+  { label: 'File Manager',  src: '/screenshots/file-manager.webp' },
+  { label: 'Audio Player',  src: '/screenshots/audio-player.webp' },
+  { label: 'Algorithms',    src: '/screenshots/algorithms.webp' },
 ];
 
 function PhoneFrame({ screen, index }: { screen: typeof screens[0]; index: number }) {
