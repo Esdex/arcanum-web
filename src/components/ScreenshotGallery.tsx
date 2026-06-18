@@ -38,15 +38,15 @@ function PhoneFrame({ screen, index }: { screen: typeof screens[0]; index: numbe
           <div
             className="absolute bg-black"
             style={{
-              inset: 4,
-              borderRadius: 24,
+              inset: 3,
+              borderRadius: 25,
               overflow: 'hidden',
               transform: 'translateZ(0)',
             }}
           >
             {/* Punch-hole camera */}
             <div
-              className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 rounded-full bg-black"
+              className="absolute top-1 left-1/2 -translate-x-1/2 z-20 rounded-full bg-black"
               style={{ width: 11, height: 11, boxShadow: 'inset 0 0 0 2px #222' }}
             />
 
