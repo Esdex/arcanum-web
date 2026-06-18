@@ -38,8 +38,8 @@ function PhoneFrame({ screen, index }: { screen: typeof screens[0]; index: numbe
           <div
             className="absolute bg-black"
             style={{
-              inset: 11,
-              borderRadius: 17,
+              inset: 4,
+              borderRadius: 24,
               overflow: 'hidden',
               transform: 'translateZ(0)',
             }}
