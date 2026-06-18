@@ -35,7 +35,7 @@ function PhoneFrame({ screen }: { screen: typeof screens[0] }) {
           >
             {/* Punch-hole camera */}
             <div
-              className="absolute top-1 left-1/2 -translate-x-1/2 z-20 rounded-full bg-black"
+              className="absolute top-[5px] left-1/2 -translate-x-1/2 z-20 rounded-full bg-black"
               style={{ width: 11, height: 11, boxShadow: 'inset 0 0 0 2px #222' }}
             />
             <img
