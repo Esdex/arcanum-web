@@ -30,15 +30,23 @@ function PhoneFrame({ screen, index }: { screen: typeof screens[0]; index: numbe
 
         {/* Phone body */}
         <div
-          className="absolute inset-0 rounded-[28px] border border-white/[0.12] shadow-2xl overflow-hidden"
+          className="absolute inset-0 rounded-[28px] border border-white/[0.12] shadow-2xl"
           style={{ background: '#0e0e0e' }}
         >
-          {/* Thin bezel all around, screen starts slightly inside */}
-          <div className="absolute inset-[5px] rounded-[24px] overflow-hidden bg-black">
+          {/* Screen area — transform:translateZ(0) forces compositing layer so overflow:hidden clips correctly */}
+          <div
+            className="absolute bg-black"
+            style={{
+              inset: 7,
+              borderRadius: 21,
+              overflow: 'hidden',
+              transform: 'translateZ(0)',
+            }}
+          >
             {/* Punch-hole camera */}
             <div
               className="absolute top-2.5 left-1/2 -translate-x-1/2 z-20 rounded-full bg-black"
-              style={{ width: 11, height: 11, boxShadow: 'inset 0 0 0 2px #1a1a1a' }}
+              style={{ width: 11, height: 11, boxShadow: 'inset 0 0 0 2px #222' }}
             />
 
             {/* Screenshot */}
@@ -54,8 +62,7 @@ function PhoneFrame({ screen, index }: { screen: typeof screens[0]; index: numbe
           <div
             className="absolute inset-0 rounded-[28px] pointer-events-none"
             style={{
-              background:
-                'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%)',
             }}
           />
         </div>
