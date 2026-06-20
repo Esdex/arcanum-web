@@ -4,6 +4,10 @@ order: 7
 section: "FAQ"
 ---
 
+## Is Arcanum part of the VeraCrypt project?
+
+No. Arcanum is an independent project and is not affiliated with or endorsed by the VeraCrypt team. We use VeraCrypt's open-source cryptographic library to ensure full container compatibility, but Arcanum is developed and maintained separately.
+
 ## Is Arcanum compatible with desktop VeraCrypt?
 
 Yes, completely. Arcanum containers are standard VeraCrypt containers. A vault created in Arcanum can be opened in VeraCrypt on Windows, macOS, or Linux, and a container created in desktop VeraCrypt can be opened in Arcanum. There is no proprietary format or metadata — the container header follows the VeraCrypt specification exactly.
