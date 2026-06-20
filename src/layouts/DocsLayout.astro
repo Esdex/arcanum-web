@@ -1,0 +1,387 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  headings?: { depth: number; text: string; slug: string }[];
+}
+
+const { title, description = '', headings = [] } = Astro.props;
+
+const nav = [
+  {
+    section: 'Getting Started',
+    items: [{ label: 'Quick Start', slug: 'getting-started' }],
+  },
+  {
+    section: 'Concepts',
+    items: [
+      { label: 'Hidden Volumes',       slug: 'hidden-volumes' },
+      { label: 'Panic Mode',           slug: 'panic-mode' },
+      { label: 'Choosing a Filesystem',slug: 'filesystems' },
+      { label: 'Calculator Disguise',  slug: 'disguise' },
+    ],
+  },
+  {
+    section: 'Security',
+    items: [{ label: 'How We Protect Your Data', slug: 'security' }],
+  },
+  {
+    section: 'FAQ',
+    items: [{ label: 'Frequently Asked Questions', slug: 'faq' }],
+  },
+];
+
+const rawSlug = Astro.url.pathname
+  .replace(/^\/docs\/?/, '')
+  .replace(/\/$/, '');
+const currentSlug = rawSlug || 'getting-started';
+
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+<Layout title={`${title} — Arcanum Docs`} description={description}>
+  <Nav />
+
+  <!-- Mobile sidebar overlay backdrop -->
+  <div
+    id="sidebar-backdrop"
+    class="fixed inset-0 bg-black/60 z-30 hidden md:hidden"
+    aria-hidden="true"
+  ></div>
+
+  <div class="min-h-screen pt-16 flex flex-col">
+    <div class="flex-1 max-w-[1400px] mx-auto w-full flex relative">
+
+      <!-- ── Sidebar ──────────────────────────────────────────────────── -->
+      <aside
+        id="docs-sidebar"
+        class="
+          fixed top-16 left-0 bottom-0 w-72 z-40 overflow-y-auto
+          bg-[#0d0d0d] border-r border-white/[0.06]
+          transform -translate-x-full transition-transform duration-200
+          md:static md:translate-x-0 md:w-64 md:shrink-0
+          md:top-auto md:bottom-auto md:overflow-y-visible
+          lg:w-72
+        "
+      >
+        <div class="sticky top-16 overflow-y-auto max-h-[calc(100vh-4rem)] py-8 px-5">
+          <!-- Logo + Docs label -->
+          <a href="/docs" class="flex items-center gap-2.5 mb-8">
+            <img src="/logo.svg" alt="" class="w-6 h-6" aria-hidden="true" />
+            <span class="text-sm font-bold text-white">Docs</span>
+          </a>
+
+          <!-- Navigation groups -->
+          <nav aria-label="Documentation navigation">
+            {nav.map(group => (
+              <div class="mb-6">
+                <p class="text-[10px] font-semibold tracking-[0.15em] uppercase text-gray-600 mb-2 px-1">
+                  {group.section}
+                </p>
+                <ul class="space-y-0.5">
+                  {group.items.map(item => {
+                    const isActive = item.slug === currentSlug;
+                    return (
+                      <li>
+                        <a
+                          href={`/docs/${item.slug}`}
+                          class={`
+                            block px-3 py-1.5 rounded-lg text-sm transition-colors
+                            ${isActive
+                              ? 'bg-crystal/10 text-crystal font-medium border-l-2 border-crystal pl-[10px]'
+                              : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'}
+                          `}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </nav>
+
+          <!-- Divider + links -->
+          <div class="mt-4 pt-5 border-t border-white/[0.06] space-y-1">
+            <a href="/privacy" class="block px-3 py-1.5 text-xs text-gray-600 hover:text-gray-400 transition-colors">
+              Privacy Policy
+            </a>
+            <a href="https://github.com/Esdex/Arcanum" class="block px-3 py-1.5 text-xs text-gray-600 hover:text-gray-400 transition-colors">
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── Main content + TOC ───────────────────────────────────────── -->
+      <div class="flex-1 min-w-0 flex">
+
+        <!-- Content -->
+        <main class="flex-1 min-w-0 px-6 sm:px-10 lg:px-16 py-12 pb-24">
+
+          <!-- Mobile sidebar toggle -->
+          <button
+            id="sidebar-toggle"
+            class="md:hidden flex items-center gap-2 text-gray-500 hover:text-white mb-8 text-sm transition-colors"
+            aria-label="Open navigation"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+            </svg>
+            Menu
+          </button>
+
+          <div class="max-w-[720px] docs-prose">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-10 text-white">
+              {title}
+            </h1>
+            <slot />
+          </div>
+
+          <!-- Prev/Next navigation -->
+          <div class="max-w-[720px] mt-16 pt-8 border-t border-white/[0.06] flex justify-between gap-4 text-sm">
+            {(() => {
+              const allItems = nav.flatMap(g => g.items);
+              const idx = allItems.findIndex(i => i.slug === currentSlug);
+              const prev = idx > 0 ? allItems[idx - 1] : null;
+              const next = idx < allItems.length - 1 ? allItems[idx + 1] : null;
+              return (
+                <>
+                  {prev
+                    ? <a href={`/docs/${prev.slug}`} class="flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                        </svg>
+                        {prev.label}
+                      </a>
+                    : <span />
+                  }
+                  {next
+                    ? <a href={`/docs/${next.slug}`} class="flex items-center gap-2 text-gray-500 hover:text-white transition-colors ml-auto">
+                        {next.label}
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </a>
+                    : <span />
+                  }
+                </>
+              );
+            })()}
+          </div>
+        </main>
+
+        <!-- On-page TOC (xl screens only) -->
+        {tocHeadings.length > 0 && (
+          <aside class="hidden xl:block w-56 shrink-0 py-12 pr-8">
+            <div class="sticky top-24">
+              <p class="text-[10px] font-semibold tracking-[0.15em] uppercase text-gray-600 mb-3">
+                On this page
+              </p>
+              <ul class="space-y-1.5">
+                {tocHeadings.map(h => (
+                  <li>
+                    <a
+                      href={`#${h.slug}`}
+                      class={`block text-xs text-gray-500 hover:text-white transition-colors leading-snug
+                        ${h.depth === 3 ? 'pl-3' : ''}`}
+                    >
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        )}
+      </div>
+    </div>
+
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  /* ── Prose styles for markdown content ──────────────────────────────── */
+  .docs-prose :global(h2) {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    scroll-margin-top: 5rem;
+    letter-spacing: -0.01em;
+  }
+  .docs-prose :global(h3) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    scroll-margin-top: 5rem;
+  }
+  .docs-prose :global(p) {
+    color: #9ca3af;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+  }
+  .docs-prose :global(a) {
+    color: #3aa6ae;
+    text-decoration: none;
+  }
+  .docs-prose :global(a:hover) {
+    text-decoration: underline;
+  }
+  .docs-prose :global(strong) {
+    color: #e5e7eb;
+    font-weight: 600;
+  }
+  .docs-prose :global(em) {
+    color: #e5e7eb;
+    font-style: italic;
+  }
+  .docs-prose :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+  .docs-prose :global(ul li) {
+    position: relative;
+    padding-left: 1.25rem;
+    color: #9ca3af;
+    line-height: 1.75;
+    margin-bottom: 0.375rem;
+    font-size: 0.9375rem;
+  }
+  .docs-prose :global(ul li::before) {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: #3aa6ae;
+  }
+  .docs-prose :global(ol) {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    counter-reset: item;
+  }
+  .docs-prose :global(ol li) {
+    position: relative;
+    padding-left: 2rem;
+    color: #9ca3af;
+    line-height: 1.75;
+    margin-bottom: 0.5rem;
+    font-size: 0.9375rem;
+    counter-increment: item;
+  }
+  .docs-prose :global(ol li::before) {
+    content: counter(item);
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: rgba(58,166,174,0.12);
+    border: 1px solid rgba(58,166,174,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #3aa6ae;
+    text-align: center;
+    line-height: 1.5rem;
+    top: 0.15rem;
+  }
+  .docs-prose :global(code) {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    font-size: 0.825em;
+    color: #67c0b6;
+    font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  }
+  .docs-prose :global(pre) {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+  }
+  .docs-prose :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.85rem;
+    color: #e5e7eb;
+  }
+  .docs-prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+  .docs-prose :global(thead tr) {
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .docs-prose :global(th) {
+    text-align: left;
+    padding: 0.625rem 1rem;
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.8125rem;
+  }
+  .docs-prose :global(td) {
+    padding: 0.625rem 1rem;
+    color: #9ca3af;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .docs-prose :global(tr:last-child td) {
+    border-bottom: none;
+  }
+  .docs-prose :global(blockquote) {
+    border-left: 3px solid rgba(58,166,174,0.4);
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    color: #6b7280;
+    font-style: italic;
+  }
+  .docs-prose :global(hr) {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin: 2rem 0;
+  }
+</style>
+
+<script>
+  const toggle   = document.getElementById('sidebar-toggle');
+  const sidebar  = document.getElementById('docs-sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+
+  function openSidebar() {
+    sidebar?.classList.remove('-translate-x-full');
+    backdrop?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar?.classList.add('-translate-x-full');
+    backdrop?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  toggle?.addEventListener('click', openSidebar);
+  backdrop?.addEventListener('click', closeSidebar);
+</script>
