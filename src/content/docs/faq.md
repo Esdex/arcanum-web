@@ -46,6 +46,25 @@ A keyfile is any file you designate as an additional authentication factor. To o
 
 This is the calculator disguise feature. See [Calculator Disguise](/docs/disguise) for how it works and how to access the vault interface.
 
+## Can I shrink a vault?
+
+No. Shrinking a container is fundamentally impossible without first mounting it, and neither Arcanum nor desktop VeraCrypt supports it.
+
+The reason is how VeraCrypt encryption works: the entire container — including filesystem metadata — is encrypted as a flat array of bytes. From the outside, Arcanum cannot tell which sectors are occupied by real files and which are free space. It only sees ciphertext.
+
+Expanding is safe precisely because it avoids this problem: new space is appended to the end of the file, and existing data stays at exactly the same byte offsets. Nothing moves.
+
+Shrinking is a different matter entirely. To do it safely you would need to:
+
+1. Decrypt the container and mount the filesystem.
+2. Read the filesystem structure to determine where real data ends.
+3. Relocate the filesystem so it fits within the smaller boundary.
+4. Truncate the container file.
+
+This is equivalent to running `resize2fs` — and it requires a separate implementation for every supported filesystem (FAT32, exFAT, and any future additions). Desktop VeraCrypt does not support this either.
+
+**Practical alternative:** create a new, smaller vault and move your files into it.
+
 ## Does Arcanum work on Android 10 and later?
 
 Arcanum requires Android 10 (API 29) or later.
