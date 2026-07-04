@@ -45,4 +45,4 @@ Compatible with: Windows ✅ · macOS ✅ · Linux ✅
 - If you don't have files larger than 4 GB, choose **FAT**. It is the safer default with the broadest compatibility.
 - If you need to store individual files over 4 GB, choose **exFAT**.
 
-When in doubt, the wizard will automatically recommend the right option based on your vault size.
+When in doubt, the wizard will automatically recommend the right option based on your vault size: FAT for vaults up to 2 GB, exFAT for larger ones.

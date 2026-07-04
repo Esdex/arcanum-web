@@ -6,7 +6,9 @@ section: "Concepts"
 
 ## How the disguise works
 
-Arcanum does not appear as "Arcanum" on your home screen or in the app drawer. Instead, it presents itself as a plain, functional calculator. The calculator works normally — you can use it for arithmetic. Nothing about it reveals that an encrypted vault is hidden inside.
+Arcanum does not appear as "Arcanum" on your home screen or in the app drawer. Instead, it presents itself as a plain, functional calculator. The calculator works normally — it supports full arithmetic expressions including parentheses, percentages, and sign toggle. Nothing about it reveals that an encrypted vault is hidden inside.
+
+The disguise is applied in **Settings → Security → Calculator Disguise**. Once enabled, the toggle is permanently grayed out and the change cannot be undone without reinstalling the app.
 
 ## Accessing the vault
 
