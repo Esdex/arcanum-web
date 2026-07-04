@@ -38,9 +38,10 @@ Select **Hidden Volume** on the first step of the creation wizard. The wizard ru
 11. **Hidden algorithm** — choose a separate cipher and hash for the hidden volume. These can differ from the outer volume's settings.
 12. **Hidden volume size** — must be between 4 MB and (outer size − 4 MB). The wizard validates this and shows an error if the value is out of range.
 13. **Hidden password** — must be **different** from the outer volume password. The wizard shows a warning reminding you of this. Optionally enter a separate PIM for the hidden volume.
-14. **Hidden entropy** — another 500-point collection for the hidden volume's key.
-15. **Creating hidden volume** — the hidden volume is written into the free space of the outer container.
-16. **Done** — both volumes are complete. A warning card is shown reminding you of the overfill rule.
+14. **Hidden keyfile** — optionally add one or more keyfiles for the hidden volume (separate from any outer keyfiles).
+15. **Hidden entropy** — another 500-point collection for the hidden volume's key.
+16. **Creating hidden volume** — the hidden volume is written into the free space of the outer container.
+17. **Done** — both volumes are complete. A warning card is shown reminding you of the overfill rule.
 
 ## Important warnings
 

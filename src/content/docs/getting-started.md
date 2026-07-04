@@ -10,7 +10,7 @@ Arcanum is an encrypted vault manager for Android that creates and opens standar
 
 ## Opening the app
 
-Arcanum presents itself as a plain calculator on your home screen and in the app drawer. To open the vault interface, type your PIN on the calculator then **long-press the `=` key for 2 seconds**. The app will unlock and navigate to your vault list.
+Arcanum presents itself as a plain calculator on your home screen and in the app drawer. To open the vault interface, type your PIN (4–12 digits) on the calculator then **long-press the `=` key for 2 seconds**. The app will unlock and navigate to your vault list.
 
 If you haven't set a PIN yet, the first launch will take you directly to setup.
 
@@ -22,7 +22,7 @@ Tap the **+** button on the vault list screen to start the creation wizard. The 
 2. **Location** — store the vault inside Arcanum's private storage (no extra permissions needed), or pick a folder anywhere on your device (requires "All Files Access" on Android 11+). Enter a filename — the default is `vault.hc`, but any extension works.
 3. **Encryption algorithm** — AES is the default and the fastest on modern hardware. All options are VeraCrypt-compatible. You also select a hash algorithm here (SHA-512 is the default).
 4. **Volume size** — choose a preset (256 MB → 10 GB) or enter a custom size in MB or GB.
-5. **Password** — type and confirm your password. Optionally attach keyfiles or enter a custom PIM for extra security. **There is no password recovery — if you lose your password, your data is unrecoverable.**
+5. **Password** — type and confirm your password. A live strength meter shows Weak / Fair / Strong / Very Strong as you type. Optionally attach keyfiles or enter a custom PIM for extra security. **There is no password recovery — if you lose your password, your data is unrecoverable.** Note: if you set a PIM below 485, your password must be at least 20 characters long — the wizard enforces this.
 6. **Format mode** — Quick Format is faster; Secure Format overwrites the entire container with random data first (slower but leaves no trace of previous content).
 7. **Filesystem** — FAT is recommended for most users and works on all operating systems. Choose exFAT only if you need to store individual files larger than 4 GB. See [Choosing a Filesystem](/docs/filesystems).
 8. **Entropy** — drag your finger around the canvas to collect randomness for key generation. 500 unique touch points are required.
