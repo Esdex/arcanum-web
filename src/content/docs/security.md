@@ -69,6 +69,8 @@ When you enable biometric unlock for a vault, Arcanum generates an AES key in th
 
 The key is also configured with `setInvalidatedByBiometricEnrollment(true)`, which means adding a new fingerprint or face to the device immediately invalidates the key and revokes biometric access to that vault.
 
+**Per-vault unlock vs. app entry.** The per-vault unlock above is bound to the Keystore key, so it cannot be spoofed — Android will not release the key without a genuine biometric match. The optional biometric prompt shown when *opening the app* is a lighter gate that is not tied to a Keystore operation: on a rooted or instrumented device it could be bypassed. This only reveals the vault list — each vault still requires its own password or the Keystore-bound biometric to mount — so no decrypted vault data is exposed by bypassing the app-entry prompt.
+
 ## Encrypted database
 
 Arcanum's internal database (vault records, gallery index, calculator history) is encrypted with **SQLCipher** — an open-source SQLite extension that encrypts the database file at rest using AES-256. The database key is derived from the Keystore-backed key, so the database is unreadable without the device's hardware security module.
