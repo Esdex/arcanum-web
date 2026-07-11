@@ -17,9 +17,13 @@ To unlock Arcanum from the calculator:
 1. Type your PIN digits. They appear as the number on the calculator display.
 2. **Long-press the `=` key for 2 seconds.**
 
-If the PIN is correct, Arcanum navigates to the vault list. If the PIN is wrong, the calculator simply does nothing — no error message, no indication that a PIN was attempted.
+If the PIN is correct, Arcanum navigates to the vault list. Otherwise the calculator simply does nothing — no error message, no indication that a PIN was attempted. This is true whether the PIN was wrong or the vault is temporarily locked after repeated wrong attempts: the two outcomes are visually identical.
 
-If too many wrong attempts have been made, the display shows a temporary lockout message ("Locked Xs") and resets after a few seconds.
+### Lockout is invisible while the disguise is on
+
+Arcanum still rate-limits wrong PIN attempts internally — an escalating lockout kicks in after repeated failures — but with the calculator disguise enabled that lockout is **never shown on screen**. A visible "locked" message would let anyone who suspects the calculator is a vault confirm it by long-pressing `=` on random digits until the message appeared.
+
+This is a deliberate concession of disguise mode: if you mistype your PIN enough times to trigger a lockout, the calculator keeps doing nothing — even for the correct PIN — until the lockout expires, with no on-screen explanation. If a correct PIN seems to be ignored, wait a short while and try again.
 
 ## Panic PIN
 

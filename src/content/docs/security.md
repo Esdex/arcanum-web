@@ -58,7 +58,10 @@ After too many wrong PINs, Arcanum enforces a timed lockout:
 | 12–14 | 30 minutes |
 | 15 or more | 2 hours |
 
-The remaining time is shown on the calculator display ("Locked Xs").
+The lockout is always enforced, but whether it is shown depends on the disguise:
+
+- **Disguise off** (PIN entry screen): the remaining time is displayed ("Locked Xs").
+- **Disguise on** (calculator): the lockout is never shown — a locked vault behaves exactly like a wrong PIN, so an observer cannot distinguish the two. See [Calculator Disguise](/docs/disguise) for the trade-off this implies.
 
 ## Biometric unlock
 
