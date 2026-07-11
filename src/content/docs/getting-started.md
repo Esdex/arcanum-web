@@ -29,6 +29,17 @@ Tap the **+** button on the vault list screen to start the creation wizard. The 
 9. **Creating** — Arcanum formats the container. A progress indicator shows speed and time remaining.
 10. **Done** — your vault is created. Tap "Open vault" to mount it immediately.
 
+### Choosing a PIM
+
+PIM (Personal Iterations Multiplier) controls how many PBKDF2 iterations Arcanum uses to turn your password into the key. More iterations make guessing a password slower for an attacker, at the cost of a slightly longer unlock:
+
+- **Leave it empty** and Arcanum uses VeraCrypt's default of **500,000 iterations** — secure, and the right choice for most people.
+- **Set a value** and the count becomes **15,000 + (PIM × 1000)**. So a PIM of 485 matches the default, a PIM of 700 gives 715,000 iterations, and so on.
+
+A higher PIM only adds a little unlock time — it never weakens anything, so there is no "too high" from a security standpoint. Because a PIM below 485 drops the count below the default, the wizard requires a password of at least 20 characters in that case.
+
+The single biggest factor in a vault's strength is a strong, high-entropy password — that matters far more than the PIM. A high PIM cannot rescue a weak password. See [What is a PIM?](/docs/faq) for a short recap.
+
 ## Basic navigation
 
 Once a vault is mounted, Arcanum gives you a full file manager and media viewer inside the encrypted container. Files are decrypted on the fly — they never exist unencrypted on your device's storage.

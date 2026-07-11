@@ -34,9 +34,9 @@ Yes. Arcanum is available on F-Droid. The F-Droid version has no Play Billing, n
 
 ## What is a PIM and should I use it?
 
-PIM (Personal Iterations Multiplier) adjusts the number of PBKDF2 iterations used to derive your key from your password. The default (leaving PIM empty) uses VeraCrypt's standard iteration count, which is well within the secure range. A custom PIM above the default strengthens key derivation further at the cost of slower unlock times. A PIM below the default weakens it — the wizard warns you if you enter a value that is lower than VeraCrypt's standard.
+PIM (Personal Iterations Multiplier) adjusts the number of PBKDF2 iterations used to derive your key from your password. Leaving PIM empty uses VeraCrypt's default of 500,000 iterations. Setting a PIM changes the count to 15,000 + (PIM × 1000) — so a PIM of 485 matches the default, a higher value (for example 700 → 715,000 iterations) strengthens key derivation at the cost of slower unlock, and a lower value weakens it. Because a PIM below 485 falls under the default, the wizard then requires a password of at least 20 characters.
 
-For most users, leaving PIM empty is the right choice.
+For most users, leaving PIM empty is the right choice. Whatever you pick, a strong password matters far more than the PIM. For guidance while creating a vault, see [Choosing a PIM](/docs/getting-started).
 
 ## What is a keyfile?
 
