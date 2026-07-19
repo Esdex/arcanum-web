@@ -69,7 +69,7 @@ When you enable biometric unlock for a vault, Arcanum generates an AES key in th
 
 The key is also configured with `setInvalidatedByBiometricEnrollment(true)`, which means adding a new fingerprint or face to the device immediately invalidates the key and revokes biometric access to that vault.
 
-**Per-vault unlock vs. app entry.** The per-vault unlock above is bound to the Keystore key, so it cannot be spoofed — Android will not release the key without a genuine biometric match. The optional biometric prompt shown when *opening the app* is a lighter gate that is not tied to a Keystore operation: on a rooted or instrumented device it could be bypassed. This only reveals the vault list — each vault still requires its own password or the Keystore-bound biometric to mount — so no decrypted vault data is exposed by bypassing the app-entry prompt.
+**Per-vault unlock and app entry.** Both the per-vault unlock above and the optional biometric prompt shown when *opening the app* are bound to a Keystore operation, so neither can be spoofed — Android will not release the key without a genuine biometric match. App entry uses its own dedicated Keystore key, separate from the per-vault keys, and unwraps a small unlock token on success; that cryptographic step is what the biometric gates, so a success signal alone cannot satisfy it, even on a rooted or instrumented device. The same `setUserAuthenticationRequired(true)` and `setInvalidatedByBiometricEnrollment(true)` guarantees apply. Regardless, the app-entry prompt only ever protects the vault list — each vault still requires its own password or the Keystore-bound biometric to mount, so vault contents stay encrypted independently.
 
 ## Encrypted database
 
