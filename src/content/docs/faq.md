@@ -40,7 +40,7 @@ For most users, leaving PIM empty is the right choice. Whatever you pick, a stro
 
 ## What is a keyfile?
 
-A keyfile is any file you designate as an additional authentication factor. To open a container protected by a keyfile, you need both the password and the exact keyfile. This can be a photo, a document, or any other file. Keep the keyfile safe — losing it is equivalent to losing your password.
+A keyfile is any file you designate as an additional authentication factor. To open a container protected by a keyfile, you need both the password and the exact keyfile. Arcanum can generate one for you, filled with cryptographically secure random data, or you can point it at an existing file such as a photo or a document — though a file some app might rewrite is a poor choice, since one changed byte makes it useless. Keep the keyfile safe — losing it is equivalent to losing your password. See [Keyfiles](/docs/keyfiles) for generating, sizing, and storing them.
 
 ## Why does the app look like a calculator?
 
