@@ -52,7 +52,7 @@ No. Shrinking a container is fundamentally impossible without first mounting it,
 
 The reason is how VeraCrypt encryption works: the entire container — including filesystem metadata — is encrypted as a flat array of bytes. From the outside, Arcanum cannot tell which sectors are occupied by real files and which are free space. It only sees ciphertext.
 
-Expanding is safe precisely because it avoids this problem: new space is appended to the end of the file, and existing data stays at exactly the same byte offsets. Nothing moves.
+Growing a container avoids this problem, which is why desktop VeraCrypt offers it: new space is appended to the end of the file and existing data stays at exactly the same byte offsets, so nothing has to move. Arcanum does not offer it, because the filesystem inside the container would stay its original size and the added space would be unusable — see [Running Out of Space](/docs/expand-volume).
 
 Shrinking is a different matter entirely. To do it safely you would need to:
 
