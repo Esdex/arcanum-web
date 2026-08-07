@@ -10,7 +10,7 @@ Earlier versions had an **Expand Volume** action. It has been removed, because o
 
 Expanding grew the encrypted container, but not the filesystem inside it. A vault expanded from 1 GB to 4 GB still held a 1 GB filesystem, so it accepted not one extra file — while the app cheerfully reported gigabytes of free space that no write could ever reach.
 
-This is not an Android shortcoming. Desktop VeraCrypt has the same limit and warns about it before expanding: *"Only the VeraCrypt volume itself will be expanded, but not the file system."* On Windows it can finish the job for NTFS by asking the operating system to extend the filesystem, but it never does this for FAT or exFAT — the only two formats Arcanum uses. Android offers no equivalent call, and growing a FAT or exFAT filesystem by hand means moving the whole data region, since the allocation tables sit in front of it and have to grow first.
+This is not an Android shortcoming. Desktop VeraCrypt has the same limit and warns about it before expanding: *"Only the VeraCrypt volume itself will be expanded, but not the file system."* On Windows it can finish the job for NTFS by asking the operating system to extend the filesystem, but it never does this for FAT or exFAT. Android offers no equivalent call, and growing a FAT or exFAT filesystem by hand means moving the whole data region, since the allocation tables sit in front of it and have to grow first.
 
 Rather than keep a button that quietly did nothing useful, it is gone. Here is what to do instead.
 
@@ -32,9 +32,9 @@ Keep the old vault until you have checked the new one. Deleting it is the only i
 If you would rather keep the same container file, master key and header backups, you can do the whole operation on a computer:
 
 1. Copy the container file to a desktop machine.
-2. Expand the volume with **VeraCrypt Expander**, accepting its FAT/exFAT warning.
+2. Expand the volume with **VeraCrypt Expander**, accepting its filesystem warning.
 3. Mount the expanded volume in VeraCrypt.
-4. Extend the filesystem into the new space with a partition tool that can resize FAT or exFAT.
+4. Extend the filesystem into the new space with a tool that can resize it — a partition tool for FAT or exFAT, or `resize2fs` for an ext4 vault on Linux.
 5. Copy the container file back to your device.
 
 Step 4 is the one Arcanum cannot do for you, and the reason the in-app action was withdrawn.

@@ -61,7 +61,7 @@ Shrinking is a different matter entirely. To do it safely you would need to:
 3. Relocate the filesystem so it fits within the smaller boundary.
 4. Truncate the container file.
 
-This is equivalent to running `resize2fs` — and it requires a separate implementation for every supported filesystem (FAT32, exFAT, and any future additions). Desktop VeraCrypt does not support this either.
+This is equivalent to running `resize2fs` — and it requires a separate implementation for every supported filesystem (FAT32, exFAT, ext4, and any future additions). Desktop VeraCrypt does not support this either.
 
 **Practical alternative:** create a new, smaller vault and move your files into it.
 
