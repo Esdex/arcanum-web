@@ -24,7 +24,7 @@ Tap the **+** button on the vault list screen to start the creation wizard. The 
 4. **Volume size** — choose a preset (256 MB → 10 GB) or enter a custom size in MB or GB.
 5. **Password** — type and confirm your password. A live strength meter shows Weak / Fair / Strong / Very Strong as you type. Optionally attach a keyfile — either an existing file or a fresh one via **Generate new keyfile**, see [Keyfiles](/docs/keyfiles) — or enter a custom PIM for extra security. **There is no password recovery — if you lose your password, your data is unrecoverable.** Note: if you set a PIM below 485, your password must be at least 20 characters long — the wizard enforces this.
 6. **Format mode** — Quick Format is faster; Secure Format overwrites the entire container with random data first (slower but leaves no trace of previous content).
-7. **Filesystem** — FAT is recommended for most users and works on all operating systems. Choose exFAT only if you need to store individual files larger than 4 GB. See [Choosing a Filesystem](/docs/filesystems).
+7. **Filesystem** — FAT is recommended for most users and works on all operating systems. Choose exFAT if you need to store individual files larger than 4 GB, or ext4 if you only ever open the vault on Linux or on your phone. See [Choosing a Filesystem](/docs/filesystems).
 8. **Entropy** — drag your finger around the canvas to collect randomness for key generation. 500 unique touch points are required.
 9. **Creating** — Arcanum formats the container. A progress indicator shows speed and time remaining.
 10. **Done** — your vault is created. Tap "Open vault" to mount it immediately.
