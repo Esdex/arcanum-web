@@ -6,7 +6,7 @@ section: "Concepts"
 
 ## Overview
 
-When creating a vault, step 7 asks you to choose a filesystem. The filesystem determines how files are organised inside your encrypted container and sets limits on individual file sizes. Your choice here does not affect the encryption — it only affects how the content inside the vault is structured.
+When creating a vault, the wizard asks you to choose a filesystem. The filesystem determines how files are organised inside your encrypted container and sets limits on individual file sizes. Your choice here does not affect the encryption — it only affects how the content inside the vault is structured.
 
 Arcanum supports three filesystems: FAT, exFAT, and ext4.
 
@@ -14,7 +14,7 @@ Arcanum supports three filesystems: FAT, exFAT, and ext4.
 
 **Recommended for most users.**
 
-FAT is the most universally compatible filesystem. Containers formatted with FAT can be opened on Windows, macOS, and Linux without any additional software or drivers. Arcanum automatically recommends FAT unless your vault is extremely large.
+FAT is the most universally compatible filesystem. Containers formatted with FAT can be opened on Windows, macOS, and Linux without any additional software or drivers. Arcanum recommends FAT for vaults up to 4 GB, and exFAT above that — a vault smaller than 4 GB cannot hold a file FAT would refuse, so there is nothing to gain by giving up FAT's compatibility.
 
 **Limitation:** individual files inside the vault cannot exceed **4 GB**. If you need to store a 4K video, a large database, or a disk image, you will hit this limit.
 
