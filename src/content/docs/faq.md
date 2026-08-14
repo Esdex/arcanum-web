@@ -16,7 +16,7 @@ Yes, completely. Arcanum containers are standard VeraCrypt containers. A vault c
 
 Arcanum supports all five VeraCrypt single ciphers — AES, Serpent, Twofish, Camellia, and Kuznyechik — plus ten cascade combinations (two or three ciphers in sequence). For hash/key derivation: SHA-512, SHA-256, Whirlpool, Streebog, and BLAKE2s-256.
 
-See [How We Protect Your Data](/docs/security) for the full list.
+See [How We Protect Your Data](/docs/security/) for the full list.
 
 ## What happens if I forget my password?
 
@@ -36,15 +36,15 @@ Yes. Arcanum is available on F-Droid. The F-Droid version has no Play Billing, n
 
 PIM (Personal Iterations Multiplier) adjusts the number of PBKDF2 iterations used to derive your key from your password. Leaving PIM empty uses VeraCrypt's default of 500,000 iterations. Setting a PIM changes the count to 15,000 + (PIM × 1000) — so a PIM of 485 matches the default, a higher value (for example 700 → 715,000 iterations) strengthens key derivation at the cost of slower unlock, and a lower value weakens it. Because a PIM below 485 falls under the default, the wizard then requires a password of at least 20 characters.
 
-For most users, leaving PIM empty is the right choice. Whatever you pick, a strong password matters far more than the PIM. For guidance while creating a vault, see [Choosing a PIM](/docs/getting-started).
+For most users, leaving PIM empty is the right choice. Whatever you pick, a strong password matters far more than the PIM. For guidance while creating a vault, see [Choosing a PIM](/docs/).
 
 ## What is a keyfile?
 
-A keyfile is any file you designate as an additional authentication factor. To open a container protected by a keyfile, you need both the password and the exact keyfile. Arcanum can generate one for you, filled with cryptographically secure random data, or you can point it at an existing file such as a photo or a document — though a file some app might rewrite is a poor choice, since one changed byte makes it useless. Keep the keyfile safe — losing it is equivalent to losing your password. See [Keyfiles](/docs/keyfiles) for generating, sizing, and storing them.
+A keyfile is any file you designate as an additional authentication factor. To open a container protected by a keyfile, you need both the password and the exact keyfile. Arcanum can generate one for you, filled with cryptographically secure random data, or you can point it at an existing file such as a photo or a document — though a file some app might rewrite is a poor choice, since one changed byte makes it useless. Keep the keyfile safe — losing it is equivalent to losing your password. See [Keyfiles](/docs/keyfiles/) for generating, sizing, and storing them.
 
 ## Why does the app look like a calculator?
 
-This is the calculator disguise feature. See [Calculator Disguise](/docs/disguise) for how it works and how to access the vault interface.
+This is the calculator disguise feature. See [Calculator Disguise](/docs/disguise/) for how it works and how to access the vault interface.
 
 ## Can I shrink a vault?
 
@@ -52,7 +52,7 @@ No. Shrinking a container is fundamentally impossible without first mounting it,
 
 The reason is how VeraCrypt encryption works: the entire container — including filesystem metadata — is encrypted as a flat array of bytes. From the outside, Arcanum cannot tell which sectors are occupied by real files and which are free space. It only sees ciphertext.
 
-Growing a container avoids this problem, which is why desktop VeraCrypt offers it: new space is appended to the end of the file and existing data stays at exactly the same byte offsets, so nothing has to move. Arcanum does not offer it, because the filesystem inside the container would stay its original size and the added space would be unusable — see [Running Out of Space](/docs/expand-volume).
+Growing a container avoids this problem, which is why desktop VeraCrypt offers it: new space is appended to the end of the file and existing data stays at exactly the same byte offsets, so nothing has to move. Arcanum does not offer it, because the filesystem inside the container would stay its original size and the added space would be unusable — see [Running Out of Space](/docs/expand-volume/).
 
 Shrinking is a different matter entirely. To do it safely you would need to:
 

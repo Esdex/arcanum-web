@@ -27,7 +27,7 @@ This is a deliberate concession of disguise mode: if you mistype your PIN enough
 
 ## Panic PIN
 
-If you have set up a panic PIN (see [Panic Mode](/docs/panic-mode)), entering it on the calculator follows the same procedure — type the panic PIN, long-press `=`. The app opens normally, and the background wipe begins silently. From an observer's perspective, both PINs produce the same visible result.
+If you have set up a panic PIN (see [Panic Mode](/docs/panic-mode/)), entering it on the calculator follows the same procedure — type the panic PIN, long-press `=`. The app opens normally, and the background wipe begins silently. From an observer's perspective, both PINs produce the same visible result.
 
 ## Auto-lock
 
