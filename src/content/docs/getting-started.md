@@ -18,13 +18,13 @@ If you haven't set a PIN yet, the first launch will take you directly to setup.
 
 Tap the **+** button on the vault list screen to start the creation wizard. The wizard walks you through 10 steps for a standard vault:
 
-1. **Volume type** — choose Standard Volume (or Hidden Volume if you need plausible deniability; see [Hidden Volumes](/docs/hidden-volumes)).
+1. **Volume type** — choose Standard Volume (or Hidden Volume if you need plausible deniability; see [Hidden Volumes](/docs/hidden-volumes/)).
 2. **Location** — store the vault inside Arcanum's private storage (no extra permissions needed), or pick a folder anywhere on your device (requires "All Files Access" on Android 11+). Enter a filename — the default is `vault.hc`, but any extension works.
 3. **Encryption algorithm** — AES is the default and the fastest on modern hardware. All options are VeraCrypt-compatible. You also select a hash algorithm here (SHA-512 is the default).
 4. **Volume size** — choose a preset (256 MB → 10 GB) or enter a custom size in MB or GB.
-5. **Password** — type and confirm your password. A live strength meter shows Weak / Fair / Strong / Very Strong as you type. Optionally attach a keyfile — either an existing file or a fresh one via **Generate new keyfile**, see [Keyfiles](/docs/keyfiles) — or enter a custom PIM for extra security. **There is no password recovery — if you lose your password, your data is unrecoverable.** Note: if you set a PIM below 485, your password must be at least 20 characters long — the wizard enforces this.
+5. **Password** — type and confirm your password. A live strength meter shows Weak / Fair / Strong / Very Strong as you type. Optionally attach a keyfile — either an existing file or a fresh one via **Generate new keyfile**, see [Keyfiles](/docs/keyfiles/) — or enter a custom PIM for extra security. **There is no password recovery — if you lose your password, your data is unrecoverable.** Note: if you set a PIM below 485, your password must be at least 20 characters long — the wizard enforces this.
 6. **Format mode** — Quick Format is faster; Secure Format overwrites the entire container with random data first (slower but leaves no trace of previous content).
-7. **Filesystem** — FAT is recommended for most users and works on all operating systems. Choose exFAT if you need to store individual files larger than 4 GB, or ext4 if you only ever open the vault on Linux or on your phone. See [Choosing a Filesystem](/docs/filesystems).
+7. **Filesystem** — FAT is recommended for most users and works on all operating systems. Choose exFAT if you need to store individual files larger than 4 GB, or ext4 if you only ever open the vault on Linux or on your phone. See [Choosing a Filesystem](/docs/filesystems/).
 8. **Entropy** — drag your finger around the canvas to collect randomness for key generation. 500 unique touch points are required.
 9. **Creating** — Arcanum formats the container. A progress indicator shows speed and time remaining.
 10. **Done** — your vault is created. Tap "Open vault" to mount it immediately.
@@ -38,7 +38,7 @@ PIM (Personal Iterations Multiplier) controls how many PBKDF2 iterations Arcanum
 
 A higher PIM only adds a little unlock time — it never weakens anything, so there is no "too high" from a security standpoint. Because a PIM below 485 drops the count below the default, the wizard requires a password of at least 20 characters in that case.
 
-The single biggest factor in a vault's strength is a strong, high-entropy password — that matters far more than the PIM. A high PIM cannot rescue a weak password. See [What is a PIM?](/docs/faq) for a short recap.
+The single biggest factor in a vault's strength is a strong, high-entropy password — that matters far more than the PIM. A high PIM cannot rescue a weak password. See [What is a PIM?](/docs/faq/) for a short recap.
 
 ## Basic navigation
 

@@ -41,7 +41,7 @@ The wizard runs in 4 steps. Find it in **Vault Config → Change Password** (the
 If you only want to change keyfiles (not the password), use **Vault Config → Change Keyfiles**. This is a shorter 3-step wizard:
 
 1. **Current credentials** — current password and any existing keyfiles.
-2. **New keyfiles** — add the new keyfiles, either existing files or a fresh one via **Generate new keyfile** (see [Keyfiles](/docs/keyfiles)). Disabling keyfiles entirely will prompt for confirmation.
+2. **New keyfiles** — add the new keyfiles, either existing files or a fresh one via **Generate new keyfile** (see [Keyfiles](/docs/keyfiles/)). Disabling keyfiles entirely will prompt for confirmation.
 3. **Entropy** — a fresh entropy collection canvas generates a new header salt.
 
 ## Important notes

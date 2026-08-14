@@ -4,7 +4,7 @@ order: 7
 section: "Using Arcanum Safely"
 ---
 
-Strong encryption only protects you if it is used well. Arcanum ports VeraCrypt's audited cryptography unchanged (see [How We Protect Your Data](/docs/security)), but the crypto is only one link in the chain — how you choose passwords, store keyfiles, keep backups, and lock the app matters just as much.
+Strong encryption only protects you if it is used well. Arcanum ports VeraCrypt's audited cryptography unchanged (see [How We Protect Your Data](/docs/security/)), but the crypto is only one link in the chain — how you choose passwords, store keyfiles, keep backups, and lock the app matters just as much.
 
 > **What counts as "safe" depends on your threat model** — who you are protecting against and what they can realistically do. A curious roommate, a lost phone, a border search, and a targeted adversary are very different problems. Treat everything below as sensible defaults to adapt, not absolute rules.
 
@@ -20,13 +20,13 @@ Strong encryption only protects you if it is used well. Arcanum ports VeraCrypt'
 There is no recovery option, no reset, and no "forgot password" flow. If you lose your credentials or the container is damaged, the data is gone permanently.
 
 - Keep an **offline backup** of the container file itself.
-- Back up the **volume header** separately — a corrupted header can lock you out even when the data is intact. See [Backing Up and Restoring the Volume Header](/docs/backup-header).
+- Back up the **volume header** separately — a corrupted header can lock you out even when the data is intact. See [Backing Up and Restoring the Volume Header](/docs/backup-header/).
 - Back up any **keyfiles**.
 - Actually test a backup by opening it. An untested backup is a guess.
 
 ## Hidden volumes and plausible deniability
 
-A [hidden volume](/docs/hidden-volumes) lets you reveal a decoy password while a second, hidden vault stays undetectable inside the same file. It is a strong feature, but be clear-eyed about its limits:
+A [hidden volume](/docs/hidden-volumes/) lets you reveal a decoy password while a second, hidden vault stays undetectable inside the same file. It is a strong feature, but be clear-eyed about its limits:
 
 - It does **not** defeat every adversary. In jurisdictions with key-disclosure laws, or under real coercion, deniability may not help you, and confidently claiming "there is nothing else here" can backfire.
 - Traces can live **outside** the container: OS thumbnail caches, "recent files" lists, another app that opened an exported file, or a cloud/device backup. Deniability inside the vault does not erase those.
@@ -35,14 +35,14 @@ A [hidden volume](/docs/hidden-volumes) lets you reveal a decoy password while a
 
 ## Panic mode
 
-[Panic Mode](/docs/panic-mode) can wipe vaults when a panic PIN is entered. Use it, but understand what it is:
+[Panic Mode](/docs/panic-mode/) can wipe vaults when a panic PIN is entered. Use it, but understand what it is:
 
 - Configure exactly what it deletes, and confirm it with the built-in **dry run** before you rely on it.
 - It is a last resort, not a guarantee. It cannot help if the device is seized while a vault is already mounted, or if copies exist elsewhere.
 
 ## The disguise and your PIN
 
-- Arcanum presents as a calculator; choose a PIN that is not an obvious one (see [Calculator Disguise](/docs/disguise)).
+- Arcanum presents as a calculator; choose a PIN that is not an obvious one (see [Calculator Disguise](/docs/disguise/)).
 - A wrong PIN and a locked-out PIN look identical by design — no error is shown either way.
 - The disguise hides the *app*, not the container files on disk. Someone browsing your storage can still see a vault file exists; that is what hidden volumes address.
 
@@ -64,7 +64,7 @@ Both are **off by default**. While external app access is on for a mounted vault
 
 ## Biometric unlock: convenience vs. control
 
-- Biometric unlock is bound to a hardware-backed Keystore key and cannot be satisfied without a genuine match (see [How We Protect Your Data](/docs/security)). It is convenient and, technically, not a weak point.
+- Biometric unlock is bound to a hardware-backed Keystore key and cannot be satisfied without a genuine match (see [How We Protect Your Data](/docs/security/)). It is convenient and, technically, not a weak point.
 - The trade-off is situational, not cryptographic: a fingerprint can be easier to compel than a memorized passphrase in some circumstances. Decide based on your threat model.
 - Enrolling a new fingerprint or face on the device invalidates the key; you will simply re-register on the next unlock.
 

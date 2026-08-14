@@ -52,11 +52,11 @@ A keyfile carries the same consequence as a password: lose it and the vault is u
 - **Store it apart from the vault.** A keyfile sitting next to the container it unlocks adds very little — an attacker who has one has both.
 - **Test it.** Open the vault with your backup copy at least once. An untested backup is a guess.
 
-See [Using Arcanum Safely](/docs/using-arcanum-safely) for how this fits with the rest of your setup.
+See [Using Arcanum Safely](/docs/using-arcanum-safely/) for how this fits with the rest of your setup.
 
 ## Adding, changing, or removing keyfiles later
 
-Keyfiles are not fixed at creation. Use **Vault Config → Change Keyfiles** to attach a keyfile to a vault that has none, swap in a different one, or remove keyfiles entirely. See [Changing Password or Keyfiles](/docs/change-password).
+Keyfiles are not fixed at creation. Use **Vault Config → Change Keyfiles** to attach a keyfile to a vault that has none, swap in a different one, or remove keyfiles entirely. See [Changing Password or Keyfiles](/docs/change-password/).
 
 Changing keyfiles rewrites the vault's header with the new credentials. The vault's contents are untouched — only what unlocks it changes.
 

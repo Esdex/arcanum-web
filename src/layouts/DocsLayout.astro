@@ -55,6 +55,15 @@ const rawSlug = Astro.url.pathname
   .replace(/\/$/, '');
 const currentSlug = rawSlug || 'getting-started';
 
+/**
+ * Quick Start is served from /docs/ itself, so linking it by slug would point at
+ * /docs/getting-started/, a second URL for the same page - the duplicate Search
+ * Console flagged. Every other page keeps its slug, with the trailing slash the
+ * canonical tag and the sitemap use, so a link no longer costs a redirect.
+ */
+const docsHref = (slug: string) =>
+  slug === 'getting-started' ? '/docs/' : `/docs/${slug}/`;
+
 const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 ---
 
@@ -85,7 +94,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
       >
         <div class="sticky top-16 overflow-y-auto max-h-[calc(100vh-4rem)] py-8 px-5">
           <!-- Logo + Docs label -->
-          <a href="/docs" class="flex items-center gap-2.5 mb-8">
+          <a href="/docs/" class="flex items-center gap-2.5 mb-8">
             <img src="/logo.svg" alt="" class="w-6 h-6" aria-hidden="true" />
             <span class="text-sm font-bold text-white">Docs</span>
           </a>
@@ -103,7 +112,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
                     return (
                       <li>
                         <a
-                          href={`/docs/${item.slug}`}
+                          href={docsHref(item.slug)}
                           class={`
                             block px-3 py-1.5 rounded-lg text-sm transition-colors
                             ${isActive
@@ -168,7 +177,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
               return (
                 <>
                   {prev
-                    ? <a href={`/docs/${prev.slug}`} class="flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
+                    ? <a href={docsHref(prev.slug)} class="flex items-center gap-2 text-gray-500 hover:text-white transition-colors">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                         </svg>
@@ -177,7 +186,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
                     : <span />
                   }
                   {next
-                    ? <a href={`/docs/${next.slug}`} class="flex items-center gap-2 text-gray-500 hover:text-white transition-colors ml-auto">
+                    ? <a href={docsHref(next.slug)} class="flex items-center gap-2 text-gray-500 hover:text-white transition-colors ml-auto">
                         {next.label}
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

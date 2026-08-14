@@ -4,10 +4,16 @@ import DocsLayout from '../../layouts/DocsLayout.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('docs');
-  return entries.map(entry => ({
-    params: { slug: entry.slug },
-    props:  { entry },
-  }));
+  // Quick Start lives at /docs/, where index.astro renders this same entry. Emitting it
+  // here too put one page at two indexable URLs, which is what Search Console reported as
+  // "Duplicate, Google chose different canonical than user". The old address stays alive
+  // as a redirect in astro.config.mjs rather than being deleted.
+  return entries
+    .filter(entry => entry.slug !== 'getting-started')
+    .map(entry => ({
+      params: { slug: entry.slug },
+      props:  { entry },
+    }));
 }
 
 const { entry } = Astro.props;
