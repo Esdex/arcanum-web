@@ -39,10 +39,11 @@ So a 64-byte file of true random data already saturates it. A 1 MB file is not s
 
 ## Using an existing file instead
 
-Any file can serve as a keyfile — a photo, a document, a song. Two cautions:
+Any file can serve as a keyfile — a photo, a document, a song. Three cautions:
 
 - **It must never change.** Apps rewrite files more often than you would expect: a photo gets re-compressed, metadata is stripped on upload, a document is re-saved. Any of that destroys the keyfile. Prefer a generated file you keep untouched, or a copy of a file you are certain is frozen.
 - **It should not be obvious.** A file that sits in the same folder as the vault, or is the only unusual file on the device, narrows an attacker's search considerably.
+- **Only its first megabyte counts.** Nothing past that is read, here or in VeraCrypt, so two files that begin with the same megabyte are the same keyfile — an original and a shortened copy of it, for instance. It also means a large file whose opening is predictable, such as a format with a long fixed header, contributes far less than its size suggests.
 
 ## Keeping keyfiles safe
 
@@ -53,6 +54,14 @@ A keyfile carries the same consequence as a password: lose it and the vault is u
 - **Test it.** Open the vault with your backup copy at least once. An untested backup is a guess.
 
 See [Using Arcanum Safely](/docs/using-arcanum-safely/) for how this fits with the rest of your setup.
+
+## Keyfiles and biometric unlock
+
+Turning on biometric unlock for a vault that uses keyfiles saves **where those keyfiles are**, never a copy of them — Arcanum does not keep your keyfile anywhere. Each unlock reads the files again from the locations you picked.
+
+This is the one place where a keyfile's location matters as well as its bytes. If a file is no longer where it was, or the storage holding it is not available at that moment — a removed memory card, an unplugged USB drive, a cloud folder that is offline — Arcanum reports that the keyfiles are not accessible and asks you to unlock manually and select them again. A keyfile kept in a cloud folder also has to be downloaded before each unlock, so the vault opens only as quickly as that provider hands the file over.
+
+Nothing is lost when this happens: the password and the keyfile open the vault as they always did. Arcanum switches the fingerprint shortcut off for that vault at the same time, so to get it back, unlock manually with the keyfiles selected and the biometric switch turned on — the new locations are saved with that unlock.
 
 ## Adding, changing, or removing keyfiles later
 
