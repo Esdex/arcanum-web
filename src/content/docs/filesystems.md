@@ -55,6 +55,29 @@ Compatible with: Windows ❌ (third-party driver needed) · macOS ❌ (third-par
 | Linux | ✅ | ✅ | ✅ |
 | Best for | General use, photos, documents | Large files: video, disk images | Linux-only workflows, many files |
 
+## If the phone dies part way through a write
+
+No vault carries a journal. FAT and exFAT have no such thing at all, and Arcanum's ext4 vaults are made without one deliberately — a journal that is written but never replayed is worse than none, and replaying one correctly is a large piece of work that buys nothing while the phone is the only thing writing to the vault.
+
+The consequence is the same for all three: if the app is killed, the battery runs out, or a USB drive is pulled while a file is being written, the vault is left in whatever state the last completed write put it in.
+
+**For ext4, what that means has been measured rather than assumed.** Every single block write of every operation — creating a file, deleting one, renaming, making and removing folders, growing a file, shortening one, writing into the middle of one — has been interrupted on purpose in testing, one write at a time, and the result checked with `e2fsck`. In every case what is left behind is bookkeeping a filesystem check tidies up, and the repair never costs anything else in the vault: every other file comes back byte for byte. What is **not** promised is the file being written at that moment. It may be there, it may be partly there, or it may not exist.
+
+Arcanum marks an ext4 vault as being written to before it starts, and marks it finished when the writes are on disk. So:
+
+- Opening a vault that was interrupted tells you so, once, and the vault opens and works normally.
+- A Linux desktop opening the same container sees the same mark and runs its own check without being asked.
+
+To run the check yourself, unlock the container in VeraCrypt with **Do not mount** selected, then:
+
+```
+sudo e2fsck -f /dev/mapper/veracrypt1
+```
+
+replacing `veracrypt1` with whatever VeraCrypt reports as the mapped device.
+
+**For FAT and exFAT the same interruption is repaired by the host's own tools** — `chkdsk` on Windows, `fsck.vfat` or `fsck.exfat` on Linux — and the same caveat applies to the file being written. Arcanum does not mark these as being written to, so nothing will tell you a check is due; and unlike ext4, this has not been measured here the way the above was. If a vault was interrupted and you want certainty, run the check.
+
 ## Which should I choose?
 
 - If you don't have files larger than 4 GB and want the vault to open anywhere, choose **FAT**. It is the safer default with the broadest compatibility.
