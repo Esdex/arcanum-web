@@ -20,7 +20,7 @@ This is the straightforward path, and it works entirely on the phone.
 
 1. Create a new vault at the size you actually want.
 2. Mount both the old and the new vault.
-3. Copy your files across in the **Files** tab, using Copy in the old vault and Paste in the new one.
+3. Copy your files across in the **Files** tab: select them in the old vault, choose **Copy**, and pick the new vault in the list that opens.
 4. Once you have confirmed everything arrived, delete the old vault.
 
 Your files are never written to disk unencrypted during the move — they travel from one mounted vault to the other in memory.
