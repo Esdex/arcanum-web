@@ -44,12 +44,48 @@ Arcanum's ext4 support is a clean-room implementation written from the published
 
 Compatible with: Windows ❌ (third-party driver needed) · macOS ❌ (third-party driver needed) · Linux ✅ · Android ✅
 
+## The same file in two places
+
+Only in ext4 vaults.
+
+Sometimes one file belongs in more than one place: a photo that is both in a trip folder and in a favourites folder, a document that two projects need. Copying it means two files from that moment on — twice the space, and editing one leaves the other behind.
+
+An ext4 vault can give a file a **second name** instead. Open the three dots beside it, choose **Create link**, and pick the folder. To do several at once, select them and use the link icon in the bar at the top.
+
+What you get is not a copy and not a shortcut. It is the same file, reached from two places:
+
+- it takes no extra space — nothing was duplicated
+- a change made through one name is there under the other, because there is only one file
+- neither name is the original, and removing one leaves the other working
+- the space comes back only when the last name is removed
+
+Because both names are equally the file, there is nothing on screen to tell one from the other. The place it shows is **Properties**, which says how many places the file is in once there is more than one. Deleting says so too: removing a name from a file that has others tells you the file will stay where its other names are, and that no space will be freed.
+
+### Linking a folder
+
+A folder can be linked the same way, and the wording in the app is the same — but what you get is different, and the difference matters.
+
+A folder link is a **pointer to the folder**, not the folder itself. Opening it takes you inside, and nothing is duplicated, but the pointer only works while the folder is where it was. Move the folder or delete it and the link goes dead. Arcanum marks a dead link as such rather than letting it look like a damaged file, and its Properties still say where it was pointing.
+
+Files behave differently here on purpose: a second name for a file cannot go dead, because it is not pointing at anything. This is a rule of the filesystem, not a choice — a folder cannot have a second name, so a pointer is the only thing that can be offered.
+
+### Links made on a computer
+
+An ext4 vault written on a Linux desktop may already contain links, and Arcanum reads them: a link to a file opens the file, a link to a folder goes into the folder.
+
+One thing to expect. A link written on a desktop often points at a path on that desktop — something like `/home/you/photos/holiday.jpg`. Inside a vault that path means "from the root of the vault", where nothing of the sort exists, so such links arrive already dead. They are marked as dead rather than shown as broken files, and their Properties say what they were looking for.
+
+### Not on FAT or exFAT
+
+Neither filesystem has any notion of one file under two names, and the option does not appear on those vaults. The only thing that could be offered instead is a copy — which takes the space again and stops being the same file, the two things this exists to avoid. If you need it, the vault has to be ext4.
+
 ## Comparison
 
 | | FAT | exFAT | ext4 |
 |---|---|---|---|
 | Max file size | 4 GB | 16 EB (no practical limit) | 16 TB |
 | Files per folder | Limited | Large | Unlimited |
+| Same file in two places | ❌ | ❌ | ✅ |
 | Windows | ✅ | ✅ | Driver needed |
 | macOS | ✅ | ✅ | Driver needed |
 | Linux | ✅ | ✅ | ✅ |
