@@ -75,6 +75,14 @@ An ext4 vault written on a Linux desktop may already contain links, and Arcanum 
 
 One thing to expect. A link written on a desktop often points at a path on that desktop — something like `/home/you/photos/holiday.jpg`. Inside a vault that path means "from the root of the vault", where nothing of the sort exists, so such links arrive already dead. They are marked as dead rather than shown as broken files, and their Properties say what they were looking for.
 
+### Taking one out of the vault
+
+Export writes onto the phone's own storage, where nothing can hold a second name for a file. A link cannot leave the vault as a link, so what leaves is always a plain copy — and Arcanum says what that came to:
+
+- a folder link is exported as a real copy of the folder it points at, under the link's own name
+- a file exported under two of its names lands as two ordinary files, taking the space twice. The summary at the end says how many did, since that is the one thing the feature exists to avoid
+- a link that leads nowhere is skipped rather than written out as an empty file, and so is a folder link pointing back into what is being exported. The summary counts those too
+
 ### Not on FAT or exFAT
 
 Neither filesystem has any notion of one file under two names, and the option does not appear on those vaults. The only thing that could be offered instead is a copy — which takes the space again and stops being the same file, the two things this exists to avoid. If you need it, the vault has to be ext4.
