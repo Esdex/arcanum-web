@@ -75,6 +75,14 @@ An ext4 vault written on a Linux desktop may already contain links, and Arcanum 
 
 One thing to expect. A link written on a desktop often points at a path on that desktop — something like `/home/you/photos/holiday.jpg`. Inside a vault that path means "from the root of the vault", where nothing of the sort exists, so such links arrive already dead. They are marked as dead rather than shown as broken files, and their Properties say what they were looking for.
 
+### Moving and copying a link
+
+Inside its own vault a link stays a link. Copied, it is written again pointing at the same place — a dead one included, since a link that leads nowhere copies as a link that leads nowhere. Moved, it simply changes folder.
+
+Moving anything inside a vault is a rename now: nothing is read and nothing is written, so it finishes at once however large the file is, and a file that has two names keeps both of them.
+
+Into another vault — or onto a FAT or exFAT one, which cannot hold a link at all — a link cannot travel as a link. Copying it takes a copy of what it leads to. Moving it leaves it where it is rather than quietly turning it into a copy, and the summary at the end says how many items stayed behind.
+
 ### Taking one out of the vault
 
 Export writes onto the phone's own storage, where nothing can hold a second name for a file. A link cannot leave the vault as a link, so what leaves is always a plain copy — and Arcanum says what that came to:
