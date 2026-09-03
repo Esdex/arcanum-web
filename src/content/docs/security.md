@@ -30,7 +30,7 @@ Cascades provide defense-in-depth: an attacker would need to break all ciphers i
 
 ## Supported hash algorithms (PBKDF2)
 
-The hash algorithm is used for key derivation (PBKDF2) — it determines how your password is stretched into the encryption key.
+The hash algorithm is used for key derivation (PBKDF2) — it determines how your password is stretched into the encryption key. Alongside the five hashes there is [Argon2id](/docs/argon2/), a derivation that spends memory instead of repetition and is far more expensive to attack in bulk.
 
 - **SHA-512** (default)
 - **SHA-256**

@@ -14,7 +14,7 @@ Yes, completely. Arcanum containers are standard VeraCrypt containers. A vault c
 
 ## What encryption algorithms are supported?
 
-Arcanum supports all five VeraCrypt single ciphers — AES, Serpent, Twofish, Camellia, and Kuznyechik — plus ten cascade combinations (two or three ciphers in sequence). For hash/key derivation: SHA-512, SHA-256, Whirlpool, Streebog, and BLAKE2s-256.
+Arcanum supports all five VeraCrypt single ciphers — AES, Serpent, Twofish, Camellia, and Kuznyechik — plus ten cascade combinations (two or three ciphers in sequence). For key derivation: SHA-512, SHA-256, Whirlpool, Streebog, BLAKE2s-256, and [Argon2id](/docs/argon2/).
 
 See [How We Protect Your Data](/docs/security/) for the full list.
 
@@ -34,7 +34,7 @@ Yes. Arcanum is available on F-Droid. The F-Droid version has no Play Billing, n
 
 ## What is a PIM and should I use it?
 
-PIM (Personal Iterations Multiplier) adjusts the number of PBKDF2 iterations used to derive your key from your password. Leaving PIM empty uses VeraCrypt's default of 500,000 iterations. Setting a PIM changes the count to 15,000 + (PIM × 1000) — so a PIM of 485 matches the default, a higher value (for example 700 → 715,000 iterations) strengthens key derivation at the cost of slower unlock, and a lower value weakens it. Because a PIM below 485 falls under the default, the wizard then requires a password of at least 20 characters.
+PIM (Personal Iterations Multiplier) adjusts the number of PBKDF2 iterations used to derive your key from your password. Leaving PIM empty uses VeraCrypt's default of 500,000 iterations. Setting a PIM changes the count to 15,000 + (PIM × 1000) — so a PIM of 485 matches the default, a higher value (for example 700 → 715,000 iterations) strengthens key derivation at the cost of slower unlock, and a lower value weakens it. Because a PIM below 485 falls under the default, the wizard then requires a password of at least 20 characters. With [Argon2id](/docs/argon2/) the PIM sets memory rather than iterations and that floor is 12.
 
 For most users, leaving PIM empty is the right choice. Whatever you pick, a strong password matters far more than the PIM. For guidance while creating a vault, see [Choosing a PIM](/docs/).
 

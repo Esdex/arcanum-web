@@ -13,7 +13,7 @@ The Change Password wizard re-encrypts your vault's **header** — the small sec
 - You want to use a stronger password.
 - You believe your current password may have been compromised.
 - You want to add, remove, or rotate keyfiles.
-- You want to switch the key derivation hash (PBKDF2 PRF) to a different algorithm.
+- You want to switch the key derivation to a different algorithm — including to or from [Argon2id](/docs/argon2/), which is also how a vault that is too expensive to open on a phone can be made cheaper.
 
 ## How to change the password
 
@@ -23,7 +23,7 @@ The wizard runs in 4 steps. Find it in **Vault Config → Change Password** (the
 2. **New credentials** — enter the new password and confirm it. You can also:
    - Add or remove keyfiles for the new password.
    - Set a new PIM.
-   - Change the PBKDF2 PRF hash algorithm (SHA-512, SHA-256, Whirlpool, Streebog, BLAKE2s-256).
+   - Change the key derivation (SHA-512, SHA-256, Whirlpool, Streebog, BLAKE2s-256, or [Argon2id](/docs/argon2/)).
 3. **Header wipe mode** — choose how many times the old header is overwritten before the new one is written:
 
    | Mode | Passes | Notes |
