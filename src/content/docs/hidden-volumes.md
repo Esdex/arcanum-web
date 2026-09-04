@@ -43,6 +43,14 @@ Select **Hidden Volume** on the first step of the creation wizard. The wizard ru
 16. **Creating hidden volume** — the hidden volume is written into the free space of the outer container.
 17. **Done** — both volumes are complete. A warning card is shown reminding you of the overfill rule.
 
+## Hidden volumes on a USB drive
+
+A hidden volume can go inside a vault on a USB drive as well as inside a file, which is what desktop VeraCrypt allows too — *"a hidden volume can be created within any type of VeraCrypt volume, i.e., within a file-hosted volume or partition/device-hosted volume"*. Pick **Hidden Volume** on the first step and a USB drive as the location, and the wizard runs the same 16 steps.
+
+One difference is worth knowing: a vault on a drive has no size to choose, because it fills whatever you gave it — the whole drive, or the partition you selected. The size step shows you that number rather than asking for one, and the hidden volume's size is then chosen inside it as usual. If you want the vault to take only part of the drive, make a partition for it on the location step; the rest of the drive stays ordinary storage.
+
+Protection works there exactly as it does for a file: unlock the outer volume with the hidden volume's password given, and writes that would reach the hidden volume are refused.
+
 ## Protecting the hidden volume while you write to the outer one
 
 The hidden volume lives in the free space at the end of the outer container, and the outer volume's filesystem has no idea it is there. Writing enough files into the outer volume will overwrite it.
