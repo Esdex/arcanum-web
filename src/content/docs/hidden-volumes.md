@@ -57,7 +57,7 @@ The hidden volume lives in the free space at the end of the outer container, and
 
 To prevent that, open the unlock screen's options, turn on **Protect hidden volume**, and enter the hidden volume's password — along with its PIM, its keyfiles and its hash, if they differ. Arcanum then finds where the hidden volume starts and refuses any write to the outer volume that would reach it.
 
-**Protection either holds or the vault does not open.** If the hidden volume cannot be opened with what you entered, the unlock fails and says so, rather than opening the outer volume without protection — a mount that could not find the hidden volume is exactly the mount that would destroy it. Two things cause that failure: the hidden password, PIM or keyfiles are wrong, or the hidden volume uses Argon2id, which is never searched for automatically (see [Argon2id](/docs/argon2)). Choose it under the hidden password, or accept the offer that a failed unlock makes.
+**Protection either holds or the vault does not open.** If the hidden volume cannot be opened with what you entered, the unlock fails and says so, rather than opening the outer volume without protection — a mount that could not find the hidden volume is exactly the mount that would destroy it. Two things cause that failure: the hidden password, PIM or keyfiles are wrong, or the hidden volume uses Argon2id, which is never searched for automatically (see [Argon2id](/docs/argon2/)). Choose it under the hidden password, or accept the offer that a failed unlock makes.
 
 Worth knowing:
 

@@ -134,7 +134,7 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
           <!-- Divider + links -->
           <div class="mt-4 pt-5 border-t border-white/[0.06] space-y-1">
-            <a href="/privacy" class="block px-3 py-1.5 text-xs text-gray-600 hover:text-gray-400 transition-colors">
+            <a href="/privacy/" class="block px-3 py-1.5 text-xs text-gray-600 hover:text-gray-400 transition-colors">
               Privacy Policy
             </a>
             <a href="https://github.com/Esdex/Arcanum" class="block px-3 py-1.5 text-xs text-gray-600 hover:text-gray-400 transition-colors">
@@ -233,6 +233,85 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 </Layout>
 
 <style>
+  /* ── The link that appears beside a heading ─────────────────────────── */
+  .docs-prose :global(h2),
+  .docs-prose :global(h3) {
+    position: relative;
+  }
+  .docs-prose :global(.heading-link) {
+    position: absolute;
+    left: -1.35em;
+    top: 0.5em;
+    display: inline-flex;
+    color: #4b5563;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  .docs-prose :global(.heading-link svg) {
+    width: 0.85em;
+    height: 0.85em;
+  }
+  .docs-prose :global(.heading-link[data-copied]) {
+    color: #67c0b6;
+    opacity: 1;
+  }
+  /* Says what the icon does, and then what it did. Above and left-aligned to the icon,
+     so it opens over the heading rather than off the edge of the page - the icon itself
+     sits in the margin, and there is nothing to the left of it. */
+  .docs-prose :global(.heading-link)::after {
+    content: 'Copy link';
+    position: absolute;
+    bottom: 135%;
+    left: 0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    background: #1A1A1A;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #9ca3af;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+  .docs-prose :global(.heading-link:hover)::after,
+  .docs-prose :global(.heading-link:focus-visible)::after {
+    opacity: 1;
+  }
+  .docs-prose :global(.heading-link[data-copied])::after {
+    content: 'Copied';
+    color: #67c0b6;
+    opacity: 1;
+  }
+  /* A tooltip needs a pointer to hover with; a finger has none. */
+  @media (hover: none) {
+    .docs-prose :global(.heading-link)::after { display: none; }
+  }
+  /* The margin it hangs in is the page's own padding, and on a narrow screen there
+     is not enough of that to hang anything in - so there it stands in the line. */
+  @media (max-width: 767px) {
+    .docs-prose :global(.heading-link) {
+      position: static;
+      margin-right: 0.4em;
+      top: 0;
+      vertical-align: baseline;
+    }
+  }
+  .docs-prose :global(h2:hover .heading-link),
+  .docs-prose :global(h3:hover .heading-link),
+  .docs-prose :global(.heading-link:focus-visible) {
+    opacity: 1;
+  }
+  .docs-prose :global(.heading-link:hover) {
+    color: #9ca3af;
+  }
+  /* Nothing hovers on a touch screen, so there it simply stands there, quietly. */
+  @media (hover: none) {
+    .docs-prose :global(.heading-link) { opacity: 0.35; }
+  }
   /* ── Prose styles for markdown content ──────────────────────────────── */
   .docs-prose :global(h2) {
     font-size: 1.375rem;
@@ -409,4 +488,64 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
   toggle?.addEventListener('click', openSidebar);
   backdrop?.addEventListener('click', closeSidebar);
+
+  /* ── A link to each section ─────────────────────────────────────────────
+   *
+   * Every heading already carries an id, so /docs/#what-is-arcanum has always
+   * worked - there was simply no way to get hold of that address short of
+   * typing it. Each h2 and h3 now grows a link beside it: clicking puts the
+   * section's full URL on the clipboard and in the address bar, so it can be
+   * pasted straight into a message.
+   *
+   * Built here rather than in the markdown so no page has to remember to do
+   * it, and so a heading renamed in the markdown carries its link with it.
+   */
+  const headings = document.querySelectorAll('.docs-prose h2[id], .docs-prose h3[id]');
+
+  const svg = paths =>
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+    'aria-hidden="true">' + paths + '</svg>';
+  const LINK_ICON = svg(
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 ' +
+    '1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 ' +
+    '4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/>');
+  /* The copy landed: said by the icon itself, because a word next to a heading that
+   * hangs in the left margin would have nowhere to go. */
+  const DONE_ICON = svg(
+    '<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>');
+
+  headings.forEach(heading => {
+    const anchor = document.createElement('a');
+    anchor.className = 'heading-link';
+    anchor.href = '#' + heading.id;
+    anchor.setAttribute('aria-label', 'Copy a link to this section');
+    anchor.innerHTML = LINK_ICON;
+
+    let restore;
+    anchor.addEventListener('click', async event => {
+      event.preventDefault();
+      const url = window.location.origin + window.location.pathname + '#' + heading.id;
+      /* replaceState rather than following the link: the reader is already looking at
+       * this heading, so moving the page under them would be an answer to a question
+       * nobody asked. The address bar still ends up holding the link. */
+      history.replaceState(null, '', '#' + heading.id);
+      /* Refused on an insecure origin and on browsers without the API, and the
+       * address bar now holds the same link either way - so a failure here costs
+       * a copy, not the link. */
+      try {
+        await navigator.clipboard.writeText(url);
+        anchor.innerHTML = DONE_ICON;
+        anchor.dataset.copied = 'true';
+        clearTimeout(restore);
+        restore = setTimeout(() => {
+          anchor.innerHTML = LINK_ICON;
+          delete anchor.dataset.copied;
+        }, 1400);
+      } catch { /* the address bar is the fallback */ }
+    });
+
+    /* First child, and hung in the margin by the stylesheet: the heading keeps its
+     * place on the page whether the link is showing or not. */
+    heading.prepend(anchor);
+  });
 </script>
