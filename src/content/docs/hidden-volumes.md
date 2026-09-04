@@ -43,9 +43,26 @@ Select **Hidden Volume** on the first step of the creation wizard. The wizard ru
 16. **Creating hidden volume** — the hidden volume is written into the free space of the outer container.
 17. **Done** — both volumes are complete. A warning card is shown reminding you of the overfill rule.
 
+## Protecting the hidden volume while you write to the outer one
+
+The hidden volume lives in the free space at the end of the outer container, and the outer volume's filesystem has no idea it is there. Writing enough files into the outer volume will overwrite it.
+
+To prevent that, open the unlock screen's options, turn on **Protect hidden volume**, and enter the hidden volume's password — along with its PIM, its keyfiles and its hash, if they differ. Arcanum then finds where the hidden volume starts and refuses any write to the outer volume that would reach it.
+
+**Protection either holds or the vault does not open.** If the hidden volume cannot be opened with what you entered, the unlock fails and says so, rather than opening the outer volume without protection — a mount that could not find the hidden volume is exactly the mount that would destroy it. Two things cause that failure: the hidden password, PIM or keyfiles are wrong, or the hidden volume uses Argon2id, which is never searched for automatically (see [Argon2id](/docs/argon2)). Choose it under the hidden password, or accept the offer that a failed unlock makes.
+
+Worth knowing:
+
+- **A fingerprint cannot protect a hidden volume.** The hidden volume's password is not saved anywhere — not with your fingerprint credentials, not beside the vault. A vault whose last unlock used protection asks for the password instead of unlocking on a fingerprint.
+- **Protection is per unlock, not a property of the vault.** You enter the hidden password each time you intend to write to the outer volume.
+- **Read-only and protection are alternatives.** A read-only mount writes nothing at all, so protection is switched off alongside it.
+- **The outer volume looks smaller than it is.** The space the hidden volume occupies is out of reach, so the outer volume reports itself full early. That is the protection working.
+
+Desktop VeraCrypt has the same feature, with the same options (`--protect-hidden`, `--protection-password`, `--protection-pim`, `--protection-hash`).
+
 ## Important warnings
 
-**Do not overfill the outer volume.** The hidden volume occupies the free space at the end of the outer container. If you copy too many files into the outer volume, you will silently overwrite and destroy the hidden volume. VeraCrypt and Arcanum cannot protect you from this — there is no warning at mount time, by design (a warning would reveal the hidden volume exists).
+**Writing to an unprotected outer volume destroys the hidden one.** With protection off there is no warning at mount time and none while you write — by design, since a warning would reveal that the hidden volume exists. Either unlock with protection whenever you intend to write to the outer volume, or treat the outer volume as read-only.
 
 A safe practice: keep the outer volume lightly filled and treat it as a buffer.
 
