@@ -36,7 +36,7 @@ Select **Hidden Volume** on the first step of the creation wizard. It then runs 
 
 - **Hidden volume info** — a summary of what was just created and what happens next, with the warning about the overfill risk (see below).
 - **Hidden algorithm** — its own cipher and hash, which may differ from the outer volume's.
-- **Hidden volume size** — between 4 MB and the outer size less 4 MB. The wizard refuses anything outside that.
+- **Hidden volume size** — between 5 MB and the outer size less 4 MB. The wizard refuses anything outside that.
 - **Hidden password** — must be **different** from the outer volume's, with its own keyfiles and its own PIM.
 - **Hidden filesystem** — its own filesystem, again independent of the outer volume's: an exFAT vault can hold an ext4 hidden volume, or the other way round. Worth thinking about if you plan to keep a file over 4 GB in there, which is more than FAT can hold.
 - **Hidden entropy** — another 500 points, for the hidden volume's key.
