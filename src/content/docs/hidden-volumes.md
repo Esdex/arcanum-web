@@ -18,34 +18,34 @@ This is a genuine security property, not security theater — it's the same mech
 
 ## How to create a hidden volume
 
-Select **Hidden Volume** on the first step of the creation wizard. The wizard runs 16 steps total: the first 9 create the outer volume, then the wizard guides you through creating the hidden volume inside it.
+Select **Hidden Volume** on the first step of the creation wizard. It then runs in two halves: first the outer volume is built exactly like a standard vault, and then the wizard walks you through the hidden volume inside it. Every question is asked twice, once per volume, and the two answers are independent.
 
-**Outer volume (steps 1–9):**
+**The outer volume**, in this order:
 
-1. **Volume type** — select Hidden Volume. The wizard now runs 16 steps.
-2. **Location + filename** — same as a standard vault.
-3. **Outer encryption algorithm** — choose cipher and hash for the outer volume.
-4. **Outer volume size** — total size of the container file. The hidden volume must fit inside this.
-5. **Outer password** — this is the "decoy" password you can reveal safely. You will see a reminder that this must differ from the hidden password.
-6. **Format mode** — Quick or Secure format for the outer volume.
-7. **Filesystem** — filesystem for the outer volume.
-8. **Entropy** — collect 500 randomness points for the outer volume.
-9. **Creating** — outer volume is written to disk.
+- **Volume type** — select Hidden Volume.
+- **Location and filename** — same as a standard vault. A USB drive can be chosen here (see below).
+- **Encryption algorithm** — cipher and hash for the outer volume.
+- **Volume size** — the total size of the container. The hidden volume has to fit inside it.
+- **Password** — this is the "decoy" password you can reveal safely. A reminder is shown that it must differ from the hidden one. Keyfiles and a PIM are set here too.
+- **Format mode** — Quick or Secure.
+- **Filesystem** — for the outer volume.
+- **Entropy** — 500 randomness points.
+- **Creating** — the outer volume is written.
 
-**Hidden volume (steps 10–16):**
+**The hidden volume**, in this order:
 
-10. **Hidden volume info** — an info screen summarises what was just created and explains the next phase. It also shows a warning about the overfill risk (see below).
-11. **Hidden algorithm** — choose a separate cipher and hash for the hidden volume. These can differ from the outer volume's settings.
-12. **Hidden volume size** — must be between 4 MB and (outer size − 4 MB). The wizard validates this and shows an error if the value is out of range.
-13. **Hidden password** — must be **different** from the outer volume password. The wizard shows a warning reminding you of this. Optionally enter a separate PIM for the hidden volume.
-14. **Hidden keyfile** — optionally add one or more keyfiles for the hidden volume (separate from any outer keyfiles).
-15. **Hidden entropy** — another 500-point collection for the hidden volume's key.
-16. **Creating hidden volume** — the hidden volume is written into the free space of the outer container.
-17. **Done** — both volumes are complete. A warning card is shown reminding you of the overfill rule.
+- **Hidden volume info** — a summary of what was just created and what happens next, with the warning about the overfill risk (see below).
+- **Hidden algorithm** — its own cipher and hash, which may differ from the outer volume's.
+- **Hidden volume size** — between 4 MB and the outer size less 4 MB. The wizard refuses anything outside that.
+- **Hidden password** — must be **different** from the outer volume's, with its own keyfiles and its own PIM.
+- **Hidden filesystem** — its own filesystem, again independent of the outer volume's: an exFAT vault can hold an ext4 hidden volume, or the other way round. Worth thinking about if you plan to keep a file over 4 GB in there, which is more than FAT can hold.
+- **Hidden entropy** — another 500 points, for the hidden volume's key.
+- **Creating** — the hidden volume is written into the free space of the outer container.
+- **Done** — both volumes exist, with a reminder of the overfill rule.
 
 ## Hidden volumes on a USB drive
 
-A hidden volume can go inside a vault on a USB drive as well as inside a file, which is what desktop VeraCrypt allows too — *"a hidden volume can be created within any type of VeraCrypt volume, i.e., within a file-hosted volume or partition/device-hosted volume"*. Pick **Hidden Volume** on the first step and a USB drive as the location, and the wizard runs the same 16 steps.
+A hidden volume can go inside a vault on a USB drive as well as inside a file, which is what desktop VeraCrypt allows too — *"a hidden volume can be created within any type of VeraCrypt volume, i.e., within a file-hosted volume or partition/device-hosted volume"*. Pick **Hidden Volume** on the first step and a USB drive as the location, and the wizard asks the same questions.
 
 One difference is worth knowing: a vault on a drive has no size to choose, because it fills whatever you gave it — the whole drive, or the partition you selected. The size step shows you that number rather than asking for one, and the hidden volume's size is then chosen inside it as usual. If you want the vault to take only part of the drive, make a partition for it on the location step; the rest of the drive stays ordinary storage.
 
