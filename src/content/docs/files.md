@@ -81,6 +81,10 @@ Links live inside one vault. A link cannot point into another vault, and a copy 
 
 Links need a vault formatted with ext4. See [Choosing a Filesystem](/docs/filesystems/).
 
+## Reading a PDF
+
+Tapping a PDF opens it inside Arcanum. The pages scroll, pinch zooms in, and a double tap goes in and back out; while zoomed, one finger moves about the page and carries on through the document. The file is read a piece at a time from inside the mounted vault, so nothing is written out to be read and a large document opens as quickly as a small one. This needs no permission and no external app access - that is only for handing a file to another app. A PDF with a password of its own cannot be opened here: Android has no way to supply one.
+
 ## Opening a file in another app
 
 **Open with…** hands a file to another app on your phone. The first time, Arcanum explains what that needs and asks: the other app reads the file straight from the mounted vault, nothing is decrypted to disk, and its access ends when you unmount. While that permission is on, the vault also appears in the system file picker, and you can turn it off again in the vault's settings.
