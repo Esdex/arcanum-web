@@ -39,6 +39,22 @@ A document made this way opens in the editor straight away. If you would rather 
 
 **Spaces and tabs** can be shown as dots and arrows. Like the colouring, this is drawn rather than substituted: what is saved is what you typed.
 
+## Markdown
+
+A `.md` file has two sides, and the button in the corner of the editor turns it over.
+
+**Writing.** The marks are visible, and a row of them sits over the keyboard while it is up: bold, italic, struck through, code, a link, a heading, a quote, a bulleted list, a numbered list and a checkbox. Each one is a toggle - press it on text that already carries the mark and the mark comes off. The line-wide ones (heading, quote, lists, checkbox) replace whatever marker the line already has, so turning a bullet into a checkbox is one press.
+
+**Reading.** Headings by size, with a rule under the first two levels. Bulleted and numbered lists, nested as deep as they are written. Quotes with a bar down their side. Code in a block of its own, monospaced, scrolling sideways rather than wrapping. Tables, with their columns measured from what is in them and the whole table scrolling sideways when it is wider than the screen. Rules, and the marks inside a line - bold, italic, struck through, code and links.
+
+**Checkboxes are not a picture.** Tapping one in the reading view edits the file: `- [ ]` becomes `- [x]` in the text itself. Undo takes it back like any other change, and it needs saving like any other change. Both sides of the button show the same text rather than a copy of it, so they cannot drift apart.
+
+**Front matter** - the block of `key: value` lines between two lines of three dashes at the very start of a file - is shown as properties rather than as a rule and a paragraph. It has its own panel in the reading view and its own colours in the editor. Three dashes anywhere else in the file are still a horizontal rule.
+
+**Links** ask before they take you out of the app, and show the whole address while they ask. Nothing is fetched from the network to render a file kept in a vault - an image written as `![alt](url)` is shown as a link rather than loaded.
+
+This is a small dialect on purpose: what people put in notes. Anything outside it - HTML, footnotes, reference-style links, setext headings, indented code blocks - is left as the text it is rather than swallowed, so nothing written in a file can go missing on the way to the screen.
+
 ## Saving
 
 **Save** is in the bar, and it is active only while there is something to save. Leaving the editor saves as well, and so does anything that puts the app in the background - which is the last moment before an auto-lock can close the vault.
