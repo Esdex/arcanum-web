@@ -1,6 +1,6 @@
 ---
 title: "Running Out of Space"
-order: 3
+order: 4
 section: "Vault Management"
 ---
 

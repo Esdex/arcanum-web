@@ -1,6 +1,6 @@
 ---
 title: "Changing Password or Keyfiles"
-order: 4
+order: 5
 section: "Vault Management"
 ---
 
