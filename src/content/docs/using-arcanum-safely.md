@@ -51,6 +51,7 @@ A [hidden volume](/docs/hidden-volumes/) lets you reveal a decoy password while 
 - Turn on **auto-lock**, and enable **unmount on lock** if you want mounted vaults closed when the app leaves the foreground or goes idle.
 - Screenshots and screen recording are blocked at the OS level while Arcanum is open, so a background recorder cannot capture your files.
 - Do not leave a vault mounted longer than you need it. A mounted vault is decrypted and accessible.
+- **Keep vaults open in the background** trades a little of that away on purpose: it stops Android from closing the app, so a vault stays open until something actually closes it. Auto-lock still applies. Leave it off unless switching apps with a vault open is something you do.
 
 ## Where you keep the container
 

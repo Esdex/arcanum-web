@@ -33,6 +33,14 @@ If you have set up a panic PIN (see [Panic Mode](/docs/panic-mode/)), entering i
 
 When Auto-Lock is enabled in Settings (it is on by default), Arcanum locks automatically when the app moves to the background. The next time you open it, you see the calculator interface and must enter your PIN again.
 
+## Keeping a vault open names the app in the shade
+
+If you turn on **Keep vaults open in the background** (Settings - Security), Android lists Arcanum in the notification shade's active apps panel for as long as a vault is open - the panel behind "1 app is active", with a button to stop it.
+
+It is listed under the name **Arcanum**, not Calculator. The disguise changes the icon and label in your launcher; that panel uses the name Android knows the app by, which no setting can change. Anyone who pulls down the shade while a vault is open can see it.
+
+The app warns about this before the switch goes on, and the switch is off by default. On Android 12 and earlier there is no such panel.
+
 ## Calculator history
 
 The calculator keeps a history of your previous calculations. This history is separate from any vault contents. The panic mode "clear calculator history" option wipes this history when a duress unlock is triggered.

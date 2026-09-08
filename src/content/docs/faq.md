@@ -65,6 +65,16 @@ This is equivalent to running `resize2fs` — and it requires a separate impleme
 
 **Practical alternative:** create a new, smaller vault and move your files into it.
 
+## Why does my vault close when I switch to another app?
+
+Because Android closed Arcanum. A mounted vault exists only inside the running app - the keys and the open file live in its memory - so when Android reclaims that memory, which it does to whichever backgrounded app it likes, the vault closes with it. Nothing is lost or damaged; the vault is simply locked again, and an import or a file you had open in another app stops where it was.
+
+**Settings - Security - Keep vaults open in the background** is the answer to this. With it on, Arcanum holds itself in memory for as long as a vault is open, which moves it out of the group Android takes from first. It is off by default.
+
+Two things it does not do. It is not a promise: a phone genuinely short of memory, and some manufacturers' own battery savers, will still close the app. And it does not touch auto-lock - the app still locks on its own schedule, and a vault set to close when you leave the app or when the screen goes off still does. It only stops Android from closing what you did not ask to close.
+
+If the calculator disguise matters to you, read [what it shows in the notification shade](/docs/disguise/) before turning it on.
+
 ## Does Arcanum work on Android 10 and later?
 
 Arcanum requires Android 10 (API 29) or later.
