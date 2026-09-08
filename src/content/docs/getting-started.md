@@ -47,3 +47,17 @@ The single biggest factor in a vault's strength is a strong, high-entropy passwo
 Once a vault is mounted, Arcanum gives you a full file manager and media viewer inside the encrypted container. Files are decrypted on the fly — they never exist unencrypted on your device's storage.
 
 Tap the lock icon or navigate back to the vault list to unmount. If Auto-Lock is enabled in Settings, Arcanum will automatically lock when the app goes to the background.
+
+## The vault list
+
+Tapping a vault opens it: if it is already open you go straight in, and if it is not you are asked for the password. Everything else is behind a long press — unmount, rename, select, and **Vault Info**, the vault's own page with its details, its settings and the things you do rarely: change the password or keyfiles, back up or restore the header, move it, forget it, delete it.
+
+The list is grouped by where each vault is kept. Under a vault's name is when it was last opened; the heading above it already says where it lives.
+
+## Renaming a vault
+
+A vault's name in Arcanum is a label, and for most vaults it is only that.
+
+If you added the vault by picking its file, **renaming changes the name in Arcanum and leaves the file alone.** This is not a shortcut: Android gives an app access to a picked file by that file's name, so renaming the file would take the access away with it and the vault would stop opening. If you want the file itself renamed, rename it in a file manager and add the vault again.
+
+A vault that Arcanum keeps in its own storage is renamed properly, file and all. A vault on a USB drive is renamed in the list without the drive being connected, since its name is not stored on the drive at all.

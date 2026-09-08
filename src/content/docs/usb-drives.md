@@ -61,6 +61,8 @@ This has a consequence worth knowing: **changing a vault's password changes how 
 
 If a drive is plugged in but holds a different volume than the one you tapped, Arcanum says so rather than asking for a password it could never accept.
 
+That fingerprint is also shown, shortened, under the vault's name in **Vault Info** — the place an ordinary vault shows its path. A vault on a drive can be renamed (with the drive in a drawer: the name is Arcanum's, not the drive's), so the fingerprint is what tells two volumes on one drive apart no matter what they are called.
+
 ## Compatibility
 
 A vault created on a drive here opens in desktop VeraCrypt, whole-device and in a partition alike. An ext4 vault mounts read-write on a Linux desktop with the standard tools. A drive partitioned by Arcanum is an ordinary MBR drive that any partitioning tool will recognise.
