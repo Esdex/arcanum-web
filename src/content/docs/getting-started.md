@@ -56,11 +56,7 @@ The list is grouped by where each vault is kept. Under a vault's name is when it
 
 ## Photos and videos
 
-The Gallery tab shows every photo and video in the vault as one grid, newest first, with the view options button for sorting and for showing only photos or only videos.
-
-Next to it is the folder button. It lists every folder in the vault that holds media - four of its newest pictures, its name, and how many files it has - and the gallery shows the folders you tick. Tick nothing and it shows everything. Several folders at once is fine, and a ticked folder means that folder rather than everything beneath it, since each folder that holds media has a row of its own.
-
-The button is coloured while a filter is on, so a gallery showing part of a vault is never mistaken for one that has lost the rest. The choice lasts as long as the vault is open and starts again at everything the next time you unlock it: a folder can be moved or emptied while the vault is closed, and a filter naming a folder that is gone would show an empty gallery with nothing to explain it.
+The Gallery tab shows every photo and video in the vault as one grid, with sorting, search, and a folder button that limits it to the folders you choose. See [Photos and Videos](/docs/gallery/).
 
 ## Renaming a vault
 
