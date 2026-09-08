@@ -64,4 +64,6 @@ A vault's name in Arcanum is a label, and for most vaults it is only that.
 
 If you added the vault by picking its file, **renaming changes the name in Arcanum and leaves the file alone.** This is not a shortcut: Android gives an app access to a picked file by that file's name, so renaming the file would take the access away with it and the vault would stop opening. If you want the file itself renamed, rename it in a file manager and add the vault again.
 
+If a vault's file is moved or lost, its card shows a crossed-out folder and tapping it offers to find the file again - see [Backing Up Your Settings](/docs/backup/), which covers the same ground for a new phone.
+
 A vault that Arcanum keeps in its own storage is renamed properly, file and all. A vault on a USB drive is renamed in the list without the drive being connected, since its name is not stored on the drive at all.
