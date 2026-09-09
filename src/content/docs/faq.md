@@ -63,7 +63,13 @@ Shrinking is a different matter entirely. To do it safely you would need to:
 
 This is equivalent to running `resize2fs` — and it requires a separate implementation for every supported filesystem (FAT32, exFAT, ext4, and any future additions). Desktop VeraCrypt does not support this either.
 
-**Practical alternative:** create a new, smaller vault and move your files into it.
+**Practical alternative:** create a new, smaller vault and [move your files into it](/docs/files/#moving-files-between-two-vaults). Both vaults can be open at the same time, so the files go straight across without passing through your phone's storage.
+
+## Can I move files from one vault into another?
+
+Yes, and without the files touching your phone's storage on the way. Mount both vaults - Arcanum keeps as many open as you mount - then select what you want in one of them, tap **Move** or **Copy**, and pick the other vault from the list the sheet opens on. Arcanum reads out of one vault and writes into the other with both mounted in the same app, so the readable bytes exist only in its memory.
+
+The list of vaults only appears when more than one is mounted; with a single vault open the sheet goes straight to its folders. See [Working with Files in a Vault](/docs/files/#moving-files-between-two-vaults).
 
 ## Why does my vault close when I switch to another app?
 
