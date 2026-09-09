@@ -30,6 +30,8 @@ Protecting the file is a switch, and it is on by default.
 
 **Without one**, the file is plain: anyone who opens it reads the names of your vaults and where they were kept. The app says so under the switch, and again after it writes such a file.
 
+There is one case where it stops and asks first. If any vault on the list is set to protect a hidden volume, a file with no password would state that a hidden volume exists - which is the single thing a hidden volume is meant to keep to itself. Arcanum shows a full-screen warning before writing such a file: put a password on it, leave the vault list out, or go ahead knowingly. See [Hidden Volumes](/docs/hidden-volumes/).
+
 ## Restoring
 
 Choose the file, give its password if it has one, and Arcanum tells you what came back: how many settings, how many vaults, and how many vaults were already in your list and were left exactly as they were. It never replaces a vault that is already there - the row on this phone knows where its file actually is, and the one in the file does not.
@@ -41,6 +43,8 @@ If anything is wrong - a wrong password, a file from a newer version of Arcanum,
 A restored vault is a row, not a volume. The vault file stays where it was; the backup carries the name and the settings, not the encrypted container.
 
 On another phone the path may not exist, and the permission you gave Arcanum to read that file certainly does not - Android grants it to an app on a device, and it does not travel. So a restored vault arrives marked with a crossed-out folder, and tapping it offers **Choose the file**. Point it at the container and it is whole again, with its name, its settings and its place in the list.
+
+One setting deliberately does not survive the trip: if a vault had been opened up to other apps through the system file picker, it arrives with that switched off. The permission is about the apps on the phone you are holding, so it is asked for again there - the same reasoning that makes a restored vault arrive locked and without fingerprint unlock.
 
 A vault on a USB drive is the exception. It is recognised by the volume itself rather than by a path, so it comes back ready to open with the drive plugged in.
 
