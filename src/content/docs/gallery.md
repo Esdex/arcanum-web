@@ -23,7 +23,7 @@ The **view options** button holds two things:
 
 Ordered by date, the grid is a timeline: months and days get headings, with today and yesterday named rather than dated. The other orders have no headings, because "March 2026" over a grid sorted by size would describe nothing.
 
-**Search** filters by file name and works alongside whatever else is set.
+**Search** filters by file name and by folder name, and works alongside whatever else is set. See [Finding a folder](#finding-a-folder).
 
 ## Showing only some folders
 
@@ -34,6 +34,14 @@ Several folders at once is fine. A ticked folder means that folder and not the t
 The button is coloured while a filter is on. A gallery showing part of a vault should never be mistaken for one that has lost the rest.
 
 The choice lasts as long as the vault is open and starts again at everything the next time you unlock it. A folder can be moved or emptied while the vault is closed, and a filter naming a folder that is no longer there would show you an empty gallery with nothing to explain it.
+
+## Finding a folder
+
+The search box matches folder names as well as file names. Type Camera and the gallery shows what is in that folder, whatever the photographs are called - which is usually the point, since a camera names its files after the date and nobody remembers those.
+
+Folders that match appear as rows above the results, each with its four newest pictures, its name and its count. Tap one and the gallery shows that folder alone: the search closes and the folder filter takes over, which is the same state the folder button would have left you in.
+
+A search matches the folder's own name, not the whole path. Searching for a parent folder does not sweep in everything beneath it, for the same reason a ticked folder means that folder and not its tree.
 
 ## Selecting
 
