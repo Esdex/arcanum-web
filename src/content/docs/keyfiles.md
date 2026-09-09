@@ -65,7 +65,7 @@ Nothing is lost when this happens: the password and the keyfile open the vault a
 
 ## Adding, changing, or removing keyfiles later
 
-Keyfiles are not fixed at creation. Use **Vault Config → Change Keyfiles** to attach a keyfile to a vault that has none, swap in a different one, or remove keyfiles entirely. See [Changing Password or Keyfiles](/docs/change-password/).
+Keyfiles are not fixed at creation. Use **Vault Info → Change Keyfiles** to attach a keyfile to a vault that has none, swap in a different one, or remove keyfiles entirely. See [Changing Password or Keyfiles](/docs/change-password/).
 
 Changing keyfiles rewrites the vault's header with the new credentials. The vault's contents are untouched — only what unlocks it changes.
 

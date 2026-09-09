@@ -17,7 +17,7 @@ The Change Password wizard re-encrypts your vault's **header** — the small sec
 
 ## How to change the password
 
-The wizard runs in 4 steps. Find it in **Vault Config → Change Password** (the vault must be unmounted first).
+The wizard runs in 4 steps. Find it in **Vault Info → Change Password** — long-press the vault in the list to open Vault Info, and unmount the vault first.
 
 1. **Current credentials** — enter your current password, plus any keyfiles and PIM that protect the vault right now. Leave **Current hash** on Auto unless the vault uses [Argon2id](/docs/argon2/): Auto tries the five PBKDF2 hashes and never that one, exactly as unlocking does, so a vault made with Argon2id has to name it here.
 2. **New credentials** — enter the new password and confirm it. You can also:
@@ -38,7 +38,7 @@ The wizard runs in 4 steps. Find it in **Vault Config → Change Password** (the
 
 ## Changing keyfiles only
 
-If you only want to change keyfiles (not the password), use **Vault Config → Change Keyfiles**. This is a shorter 3-step wizard:
+If you only want to change keyfiles (not the password), use **Vault Info → Change Keyfiles**. This is a shorter 3-step wizard:
 
 1. **Current credentials** — current password and any existing keyfiles.
 2. **New keyfiles** — add the new keyfiles, either existing files or a fresh one via **Generate new keyfile** (see [Keyfiles](/docs/keyfiles/)). Disabling keyfiles entirely will prompt for confirmation.

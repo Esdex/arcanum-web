@@ -18,7 +18,7 @@ Every container also has an **embedded backup header** stored at the end of the 
 
 ## How to back up
 
-Find it in **Vault Config → Backup Header**. The vault can be mounted or unmounted.
+Find it in **Vault Info → Backup Header** — long-press the vault in the list to open Vault Info. The vault can be mounted or unmounted.
 
 1. Enter your current password (and keyfiles / PIM if applicable) — Arcanum needs to verify you own the vault before exporting the header.
 2. Choose a destination file via the file picker.
@@ -28,7 +28,7 @@ Store the backup file separately from the vault — on a different device, a pas
 
 ## How to restore
 
-Find it in **Vault Config → Restore Header**. The vault must be unmounted.
+Find it in **Vault Info → Restore Header**. The vault must be unmounted.
 
 1. Choose the source:
    - **Embedded backup** — uses the backup copy already inside the container file. Use this if the primary header was partially overwritten but the rest of the file is intact.
