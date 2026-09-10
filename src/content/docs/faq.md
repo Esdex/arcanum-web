@@ -81,6 +81,12 @@ Two things it does not do. It is not a promise: a phone genuinely short of memor
 
 If the calculator disguise matters to you, read [what it shows in the notification shade](/docs/disguise/) before turning it on.
 
+## Can I download files straight into a vault?
+
+Yes. Turn on **External app access** for the vault, open it, and pick its folder when the other app asks where to save. What that app writes is encrypted on the way in, and nothing is decrypted to your phone's storage along the way. Turn on **Settings - Security - Keep vaults open in the background** as well, so Android does not close the vault while you are in the other app.
+
+The one thing to keep in mind is what the other app does outside the vault: some write to their own temporary folder first, and readers cache thumbnails and pages in their own storage. See [Other Apps and a Vault](/docs/external-apps/).
+
 ## Does Arcanum work on Android 10 and later?
 
 Arcanum requires Android 10 (API 29) or later.

@@ -61,7 +61,7 @@ A [hidden volume](/docs/hidden-volumes/) lets you reveal a decoy password while 
 
 ## External app access and sharing into a vault
 
-Both are **off by default**. While external app access is on for a mounted vault, other apps can read and modify its files through the system file picker. Enable it only when you need it, per vault, and unmount when you are done.
+Both are **off by default**. While external app access is on for a mounted vault, other apps can read and modify its files through the system file picker, and an app you have granted a folder can also write, rename and delete inside it. Enable it only when you need it, per vault, and unmount when you are done. What another app keeps in its own cache or temporary folder is outside the vault and outside Arcanum's control - see [Other Apps and a Vault](/docs/external-apps/).
 
 ## Biometric unlock: convenience vs. control
 

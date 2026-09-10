@@ -109,6 +109,8 @@ Tapping a note, a configuration file or a script opens it in Arcanum's own edito
 
 **Open with…** hands a file to another app on your phone. The first time, Arcanum explains what that needs and asks: the other app reads the file straight from the mounted vault, nothing is decrypted to disk, and its access ends when you unmount. While that permission is on, the vault also appears in the system file picker, and you can turn it off again in the vault's settings.
 
+The same permission works the other way round: another app can save into the vault, and a vault can be set as an app's download folder. See [Other Apps and a Vault](/docs/external-apps/).
+
 ## Deleting
 
 **Delete** removes the selected items from inside the vault. There is no recycle bin: what is deleted is gone, and it is gone from inside an encrypted container, so nothing is left outside for a recovery tool to find.
