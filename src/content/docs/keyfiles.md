@@ -45,6 +45,8 @@ Any file can serve as a keyfile — a photo, a document, a song. Three cautions:
 - **It should not be obvious.** A file that sits in the same folder as the vault, or is the only unusual file on the device, narrows an attacker's search considerably.
 - **Only its first megabyte counts.** Nothing past that is read, here or in VeraCrypt, so two files that begin with the same megabyte are the same keyfile — an original and a shortened copy of it, for instance. It also means a large file whose opening is predictable, such as a format with a long fixed header, contributes far less than its size suggests.
 
+**An empty file is not a keyfile.** A file of 0 bytes adds nothing to the key, and VeraCrypt refuses one outright, so Arcanum does too wherever a key is being made: creating a vault, and the new keyfiles in Change Keyfiles or Change Password. A vault that was made with an empty keyfile by an earlier version still opens with it — refusing it there would lock you out — and the file is marked with an orange sign that explains how to replace it: **Vault Info → Change Keyfiles**, with the empty file under the current credentials and a real keyfile, or none, as the new ones.
+
 ## Keeping keyfiles safe
 
 A keyfile carries the same consequence as a password: lose it and the vault is unrecoverable. There is no reset and no recovery.

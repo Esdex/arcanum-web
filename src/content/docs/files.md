@@ -10,6 +10,14 @@ Once a vault is mounted, Arcanum gives you a file manager inside it. Everything 
 
 The **+** button holds everything that puts something into the vault. Selecting items — long-press one, then tap the rest — replaces the bottom bar with the actions that work on a selection.
 
+## Finding a file
+
+The search in the top bar looks through the folder you are in and every folder beneath it, and shows results as it finds them, each with the folder it is in written underneath. Links to folders are not followed while it searches, so a link pointing back up the tree cannot send it round in circles.
+
+Sorting by name reads numbers as numbers — 2 before 10, IMG_9 before IMG_10 — here, in the gallery and in the vault list, so nothing has to be padded with zeros to come out in order.
+
+A photo or a video opened from here is shown with the list it was opened from: swipe in the viewer and you go through what is on screen, the search results or the folder, in that order, with hidden files left out unless they are being shown.
+
 ## Adding files
 
 **Import files** opens the system picker and copies what you choose into the folder you are looking at. **Import folder** takes a whole folder with everything inside it, subfolders and all, and recreates it in the vault.
@@ -94,6 +102,8 @@ What that means depends on what you are linking:
 - **A folder** gets a symbolic link, which is a path rather than the folder itself. Move or remove the folder it points at and the link stops working. Arcanum shows a broken link as broken rather than pretending it is a file.
 
 Links live inside one vault. A link cannot point into another vault, and a copy or a move that would carry one somewhere it cannot exist — into another vault, or onto a FAT or exFAT vault, which have no links — leaves it behind rather than turning it into an empty file. The result says how many were left behind.
+
+In the gallery a link to a file is one more picture under its second name, there as soon as the link is made. A link to a folder is not followed there, so the pictures inside appear once; opened through the link, a picture opens as the file it really is.
 
 Links need a vault formatted with ext4. See [Choosing a Filesystem](/docs/filesystems/).
 
