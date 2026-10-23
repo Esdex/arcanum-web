@@ -24,6 +24,14 @@ A photo or a video opened from here is shown with the list it was opened from: s
 
 **Delete source files after import** is a switch on the import sheet. It removes the originals from where they came from, but only after the import has actually succeeded — a file that failed to write is never deleted from outside, and neither is anything from an import you stopped yourself.
 
+### Taking a photo
+
+**New...** in the **+** button holds **Photo**, which opens a camera inside Arcanum. A photo goes from the camera straight into the folder you are in, encrypted: it never passes through another app, and no copy is left anywhere else on the phone. The camera stays open after a shot, with the last photo in the corner, so the next one is a tap away. The back and front cameras and the flash - off, auto or on - are on the screen. It takes photos; it does not record video.
+
+The first time, Arcanum says why it wants the camera before Android asks. If the permission has been refused for good, the same item offers to open the app's settings, where it can be given later. A phone without a camera does not show the item at all.
+
+What a photo keeps about itself is which way up it goes and when it was taken. The phone's make and model, the camera's settings and the location are left out, so a photo taken here says nothing about where it came from. A photo that cannot be cleaned is not saved, rather than saved with all of that in it. Photos are named after when they were taken, like `IMG_20261023_200511.jpg`, and are in the gallery straight away.
+
 ### When a name is already taken
 
 If something in the destination already has the name, Arcanum stops and asks: **Keep both**, **Skip**, or **Replace**. Your answer applies to the rest of that import, so a hundred colliding names is one question rather than a hundred. Keep both adds a number to the new name, the way `photo (1).jpg` follows `photo.jpg`.

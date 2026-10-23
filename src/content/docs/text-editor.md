@@ -22,6 +22,7 @@ The **+** button in the file browser holds **New…**, which asks what to make:
 
 - **New folder**
 - **New text document**, and then which kind: `.txt`, `.md`, or **Another extension**, where you type your own
+- **Photo**, on a phone with a camera - see [Taking a photo](/docs/files/#taking-a-photo)
 
 The name is checked while you type it rather than after. A name already taken in that folder, or one holding a character the filesystem will not accept (`\ / : * ? " < > |`), is refused before anything is written. On FAT and exFAT that check ignores upper and lower case, because on those filesystems `Notes.txt` and `notes.txt` are one and the same file.
 
