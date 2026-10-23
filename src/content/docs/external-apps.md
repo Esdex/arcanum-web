@@ -33,6 +33,8 @@ When an app creates a file whose name is already taken, the new one is saved alo
 
 Granting a folder grants the whole of it. An app you have handed a folder to can create, rename and delete inside it, not only add to it. Pick the folder you mean, not the root of the vault, when the app only needs one place to write.
 
+A link in the vault (see [Links](/docs/files/#links)) can be read through by another app, but not written through: an app that tries to save into one is refused, because the write would land in the link rather than in the file it points at. A file with a second name stays one file, so whatever an app saves into it shows under both names.
+
 If the vault is mounted read-only, other apps can read from it and nothing more.
 
 ## Using a vault as a download folder

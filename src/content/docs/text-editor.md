@@ -62,6 +62,8 @@ This is a small dialect on purpose: what people put in notes. Anything outside i
 
 The write itself never goes over the file. Arcanum writes a second file beside it, removes the original and renames the new one into its place, so a save interrupted half way - by a killed process, a drive pulled out - leaves you with either the old file or the new one, never half of either.
 
+A file with a second name in the vault (see [Links](/docs/files/#links)) is the exception, because putting a new file in its place would leave the other name holding the old text. Its new text is written into the file itself instead, and only after a complete copy of it has been written beside the file, which is what remains if that write is interrupted. A file opened through a link is saved in the file the link points at, and the link stays a link.
+
 ## What the editor does not change
 
 Four things about a text file are invisible on screen and break something when they change behind your back. Arcanum keeps all four:

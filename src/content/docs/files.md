@@ -113,6 +113,8 @@ Links live inside one vault. A link cannot point into another vault, and a copy 
 
 In the gallery a link to a file is one more picture under its second name, there as soon as the link is made. A link to a folder is not followed there, so the pictures inside appear once; opened through the link, a picture opens as the file it really is.
 
+Saving a file opened through a link saves the file the link points at, and the link stays a link - the text editor and a song's File info both work this way. A file with a second name is saved as one file, so the change shows under both names. A photo with a second name that would have to change format to be saved over, a BMP saved as PNG for instance, is not saved over: save a copy instead.
+
 Links need a vault formatted with ext4. See [Choosing a Filesystem](/docs/filesystems/).
 
 ## Reading a PDF
