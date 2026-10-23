@@ -127,8 +127,12 @@ import '../styles/global.css';
                 <td class="px-4 py-3 text-gray-400">To take photos inside the app, from Files, New, Photo. A photo goes from the camera straight into the open vault and is never saved anywhere else on the device. Asked for the first time you use it; a device without a camera never asks.</td>
               </tr>
               <tr>
-                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">READ / WRITE / MANAGE<br/>_EXTERNAL_STORAGE</td>
-                <td class="px-4 py-3 text-gray-400">To access vault files stored on external storage. On Android 11+, MANAGE_EXTERNAL_STORAGE ("All Files Access") is required to open containers outside app-private directories.</td>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">READ_EXTERNAL_STORAGE<br/>WRITE_EXTERNAL_STORAGE</td>
+                <td class="px-4 py-3 text-gray-400">On older Android versions only (reading up to Android 12, writing up to Android 10), to read the files you import and write the files you export. Newer versions give the app access to one file or folder at a time, through the system picker, and Arcanum asks for no storage permission there.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">ACCESS_MEDIA_LOCATION</td>
+                <td class="px-4 py-3 text-gray-400">So that a photo you import keeps the place it was taken, which Android otherwise strips from the copy it hands over. This is not access to your device's location. The coordinates stay in the photo, inside the vault, and go nowhere else.</td>
               </tr>
               <tr>
                 <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">USE_BIOMETRIC<br/>USE_FINGERPRINT</td>
@@ -137,6 +141,18 @@ import '../styles/global.css';
               <tr>
                 <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">FOREGROUND_SERVICE<br/>_DATA_SYNC</td>
                 <td class="px-4 py-3 text-gray-400">To run the container creation process as a foreground service, ensuring it completes reliably even when the app is in the background. No data is transmitted.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">FOREGROUND_SERVICE<br/>_MEDIA_PLAYBACK</td>
+                <td class="px-4 py-3 text-gray-400">To keep music playing while the app is in the background, with its controls in the notification.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">FOREGROUND_SERVICE<br/>_SPECIAL_USE</td>
+                <td class="px-4 py-3 text-gray-400">Only when you turn on Keep vaults open in the background: it keeps the app in memory while a vault is open, so Android does not close it and the vault with it.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">RECEIVE_BOOT_COMPLETED<br/>WAKE_LOCK</td>
+                <td class="px-4 py-3 text-gray-400">Added by Android's WorkManager library, which Arcanum uses for one job: so that a panic mode wipe runs to the end even if the app is closed, and is picked up again if the device restarts before it is done.</td>
               </tr>
               <tr>
                 <td class="px-4 py-3 text-crystal font-mono text-xs align-top whitespace-nowrap">usb.host (optional)</td>
